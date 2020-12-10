@@ -49,6 +49,9 @@ body.active {
         transform: translateY(0);
     }
 }
+a {
+    text-decoration : none;
+}
 
 header {
     position: absolute;
