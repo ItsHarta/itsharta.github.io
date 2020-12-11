@@ -564,6 +564,11 @@ footer {
   padding: 15px;
 }
 
+.project-info a:active, .project-info a:hover {
+  text-decoration: underline;
+  color: #337ab7;
+}
+
 .project-info h3 {
   font-size: 1.5em;
   font-weight: 300;
