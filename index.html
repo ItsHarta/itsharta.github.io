@@ -50,9 +50,12 @@
 
     <div id="lead">
         <div id="lead-content">
+            <h2>Hi There, I'm</h2>
             <h1>Harta Angkasa</h1>
-            <h2>
-                Cyber Security Student &bull; Tech Enthusiast &bull; C &bull; Front-End Web Dev
+            <h2> 
+                <a href="" class="typewrite" data-period="2000" data-type='[ "A CyberSec Student.", "A Tech Enthusiast.", "A C Programmer.", "A Front-End Web Dev." ]'>
+                  <span class="wrap"></span>
+                </a>
             </h2>
             <a href="javascript:void(0);" onclick="notify2();" class="btn-rounded-white">Download Resume</a>
         </div>
@@ -97,7 +100,6 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
                 </p>
             </div>
-
             <div data-date="September 2015 – September 2016">
                 <h3>Employer Name</h3>
                 <h4>Job Title</h4>
@@ -105,7 +107,6 @@
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat.
                 </p>
             </div>
-
             <div data-date="September 2015 – September 2016">
                 <h3>Employer Name</h3>
                 <h4>Job Title</h4>
@@ -260,6 +261,63 @@
     <script src="js/scripts.min.js"></script>
 </body>
 <script type="text/javascript">
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+
     function notify() {
         window.alert("Sorry, The project preview is not available anymore.");
     }
