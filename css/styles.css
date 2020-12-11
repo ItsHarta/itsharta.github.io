@@ -138,12 +138,11 @@ header.sticky {
 
 #mobile-menu-close {
   display: none;
-  text-align: right;
+  text-align: center;
   width: 100%;
   background: #fff;
   font-size: 1.5em;
-  padding-right: 15px;
-  padding-top: 10px;
+  padding-bottom: .5em;
   cursor: pointer;
   color: #3498db;
 }
@@ -564,11 +563,6 @@ footer {
   padding: 15px;
 }
 
-.project-info a:active, .project-info a:hover {
-  text-decoration: underline;
-  color: #337ab7;
-}
-
 .project-info h3 {
   font-size: 1.5em;
   font-weight: 300;
@@ -793,6 +787,9 @@ footer {
 }
 
 @media only screen and (max-width: 768px) {
+  .sticc {
+    right: 0;
+  }
   header {
     position: fixed;
     display: none;
@@ -803,7 +800,7 @@ footer {
   }
   #mobile-menu-open,
   #mobile-menu-close {
-    display: block;
+    display: inline-block;
   }
   #menu {
     height: 100%;
@@ -812,11 +809,10 @@ footer {
     border-radius: 0;
     width: 100%;
   }
-  /*
     #menu li {
         display: block;
         margin-bottom: 10px;
-    } */
+    } 
   #lead-content h1 {
     font-size: 2em;
   }
