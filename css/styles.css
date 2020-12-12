@@ -116,11 +116,6 @@ header.sticky {
   text-align: center;
 }
 
-/*
-#menu.active {
-    display: block;
-} */
-
 #mobile-menu-open {
   display: none;
   cursor: pointer;
@@ -450,7 +445,6 @@ footer {
 .vtimeline-point {
   position: relative;
   display: block;
-  vertical-align: top;
   margin-bottom: 30px;
 }
 
