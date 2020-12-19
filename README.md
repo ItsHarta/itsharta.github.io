@@ -19,3 +19,8 @@ Initial Commit
 - 12/12/2020
   - fixed link for resume download
   - fixed css for resume download button
+  
+- 19/12/2020
+  - updated skill list
+  - code cleanup
+  - documentation change
