@@ -24,3 +24,5 @@ Initial Commit
   - updated skill list
   - code cleanup
   - documentation change
+- 21/12/2020
+  - documentation cleanup
