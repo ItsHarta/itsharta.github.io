@@ -15,3 +15,12 @@ Initial Commit
   - fixed close button missing on vertical display
   - changed menu style for mobile display (<480px)
   - adjusted menu positioning on medium display (480-720px)
+  
+- 12/12/2020
+  - fixed link for resume download
+  - fixed css for resume download button
+  
+- 19/12/2020
+  - updated skill list
+  - code cleanup
+  - documentation change
