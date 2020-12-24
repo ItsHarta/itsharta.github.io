@@ -26,3 +26,6 @@ Initial Commit
   - documentation change
 - 21/12/2020
   - documentation cleanup
+- 25/12/2020
+  - updated skill set
+  - tidying up index page
