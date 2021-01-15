@@ -29,3 +29,5 @@ Initial Commit
 - 25/12/2020
   - updated skill set
   - tidying up index page
+- 15/01/2021
+  - tidying up codes
