@@ -31,3 +31,6 @@ Initial Commit
   - tidying up index page
 - 15/01/2021
   - tidying up codes
+- 18/01/2021
+  - hold resume
+  - code cleanup
