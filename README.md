@@ -34,3 +34,6 @@ Initial Commit
 - 18/01/2021
   - hold resume
   - code cleanup
+- 03/03/2021
+  - information change
+  - minor bugfix
