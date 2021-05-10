@@ -21,7 +21,7 @@
     </div>
     <!-- End #mobile-menu-toggle -->
     <header>
-        <ul id="menu">
+        <ul id="menu" class="sticc">
             <div id="mobile-menu-close">
                 <span>Close</span>
             </div>
@@ -45,7 +45,11 @@
             <li class="five">
                 <a href="#contact">Contact</a>
             </li>
+            <li class="six">
+                <i class="fas fa-times close-menu" onclick="toggleMenu();"></i>
+            </li>
         </ul>
+        <i class="fas fa-bars fa-lg hamburger-toggle" id="hamburger-toggle" onclick="toggleMenu();"></i>
     </header>
     <!-- End header -->
 
@@ -277,7 +281,7 @@
     <script src="js/scripts.min.js"></script>
 </body>
 <script type="text/javascript">
-var TxtType = function(el, toRotate, period) {
+    var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
         this.loopNum = 0;
@@ -334,30 +338,19 @@ var TxtType = function(el, toRotate, period) {
         document.body.appendChild(css);
     };
 
+    function toggleMenu(){
+        $('#hamburger-toggle').toggleClass('hide-menu');
+        $('#menu').toggleClass('toggle-menu');
+    }
     function notify_notfound(){
         window.alert("Sorry, The file you requested is not available at the moment.");
     };
     function notify() {
         window.alert("Sorry, The project preview is not available anymore.");
     };
-    window.onscroll = function() {
-        stick();
-    };
-
-    // Get the navbar
-    var menu = document.getElementById("menu");
 
     // Get the offset position of the navbar
     var sticky = menu.offsetTop;
-
-    // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-    function stick() {
-        if (window.pageYOffset >= sticky) {
-            menu.classList.add("sticc");
-        } else {
-            menu.classList.remove("sticc");
-        }
-    }
 </script>
 
 </html>

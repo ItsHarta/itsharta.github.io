@@ -2,6 +2,9 @@ body {
   font-family: 'Assistant', sans-serif;
   font-size: 16px;
 }
+.disabled{
+  display: none;
+}
 
 body.active {
   overflow: hidden;
@@ -41,6 +44,20 @@ body.active {
   content: none;
 }
 
+.hamburger-toggle {
+  color: white;
+  position: fixed;
+  top: 1em;
+  right: 2em;
+  width: 48px;
+  height: 48px;
+  padding-top: 18px;
+  background-color: #3498db;
+  text-align: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
 @keyframes dropHeader {
   0% {
     transform: translateY(-100%);
@@ -77,6 +94,13 @@ header li {
   display: inline;
 }
 
+header li i {
+  display: inline-block;
+  color: #3498db;
+  padding: 10px;
+  cursor: pointer;
+}
+
 header a {
   display: inline-block;
   color: #3498db;
@@ -104,13 +128,22 @@ header.sticky {
   z-index: 999;
 }
 
+.hide-menu {
+  transform: translateY(-100%);
+  transition: .5s;
+}
+
+.toggle-menu {
+  transform: translateY(100%);
+  transition: .5s;
+}
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
 
 .sticc {
   display: inline-block;
   position: fixed;
   z-index: 900;
-  top: 0;
+  top: -10%;
   left: auto;
   right: 2em;
   text-align: center;
@@ -788,10 +821,14 @@ footer {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 720px) {
+  .pc-menu{
+    display: none;
+  }
   .sticc {
     right: 0;
   }
+
   header {
     position: fixed;
     display: none;
