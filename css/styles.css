@@ -129,12 +129,12 @@ header.sticky {
 }
 
 .hide-menu {
-  transform: translateY(-100%);
+  transform: translateY(-4em);
   transition: .5s;
 }
 
 .toggle-menu {
-  transform: translateY(100%);
+  transform: translateY(4em);
   transition: .5s;
 }
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -822,7 +822,7 @@ footer {
 }
 
 @media only screen and (max-width: 720px) {
-  .pc-menu{
+  .hamburger-toggle{
     display: none;
   }
   .sticc {
