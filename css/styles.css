@@ -101,6 +101,10 @@ header li i {
   cursor: pointer;
 }
 
+header li i:hover{
+  color: black;
+}
+
 header a {
   display: inline-block;
   color: #3498db;
@@ -837,6 +841,11 @@ footer {
     bottom: 0;
     height: 100%;
   }
+
+  header li.six {
+    display: none;
+  }
+
   #mobile-menu-open,
   #mobile-menu-close {
     display: inline-block;
