@@ -53,6 +53,7 @@ body.active {
   height: 48px;
   padding-top: 18px;
   background-color: #3498db;
+  border-radius: 10%;
   text-align: center;
   transition: 0.3s ease;
   cursor: pointer;
