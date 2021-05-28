@@ -37,3 +37,5 @@ Initial Commit
 - 03/03/2021
   - information change
   - minor bugfix
+- 28/05/2021
+  - Change domain to me.asthene.live
