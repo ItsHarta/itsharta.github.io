@@ -134,8 +134,8 @@ header.sticky {
 }
 
 .hide-menu {
-  transform: translateY(-4em);
-  transition: .5s;
+  transition: .9s;
+  opacity: 0;
 }
 
 .toggle-menu {
@@ -827,6 +827,11 @@ footer {
 }
 
 @media only screen and (max-width: 720px) {
+
+  .six {
+    display: none !important;
+  }
+
   .hamburger-toggle{
     display: none;
   }
@@ -856,6 +861,7 @@ footer {
     overflow-y: auto;
     box-shadow: none;
     border-radius: 0;
+    padding-top: 5em;
     width: 100%;
   }
     #menu li {
