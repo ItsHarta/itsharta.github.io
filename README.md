@@ -19,3 +19,23 @@ Initial Commit
 - 12/12/2020
   - fixed link for resume download
   - fixed css for resume download button
+  
+- 19/12/2020
+  - updated skill list
+  - code cleanup
+  - documentation change
+- 21/12/2020
+  - documentation cleanup
+- 25/12/2020
+  - updated skill set
+  - tidying up index page
+- 15/01/2021
+  - tidying up codes
+- 18/01/2021
+  - hold resume
+  - code cleanup
+- 03/03/2021
+  - information change
+  - minor bugfix
+- 28/05/2021
+  - Change domain to me.asthene.live
