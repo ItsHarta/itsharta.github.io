@@ -139,7 +139,7 @@ header.sticky {
 }
 
 .toggle-menu {
-  transform: translateY(100%);
+  transform: translateY(8rem);
   transition: .5s;
 }
 /* The sticky class is added to the navbar with JS when it reaches its scroll position */
@@ -148,7 +148,7 @@ header.sticky {
   display: inline-block;
   position: fixed;
   z-index: 900;
-  top: -10%;
+  top: -8rem;
   left: auto;
   right: 2em;
   text-align: center;
