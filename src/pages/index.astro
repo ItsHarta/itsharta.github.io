@@ -1,14 +1,18 @@
 ---
 import AppLayout from "@layouts/AppLayout.astro";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import authorImage from "../assets/me.png";
 import technologies from "@data/technologies.json";
 import credentials from "@data/credentials.json";
+import works from "@data/works.json";
 import Skill from "@components/Skill.astro";
+import Work from "@components/Work.astro";
 import { author } from "@data/socials";
 ---
 
 <AppLayout title="Harta Angkasa">
+  <!-- Page Header -->
   <header class="sm:flex sm:items-center sm:justify-between">
     <div class="rounded aspect-square w-40 overflow-hidden inline-flex drop-shadow-none lg:drop-shadow-[0px_0px_35px_rgba(83,70,250,0.90)]">
       <Image
@@ -35,6 +39,26 @@ import { author } from "@data/socials";
         Aside from software development, i am also skilled in security engineering and information security management.
         I am also a tech enthusiast and a lifelong learner.
       </p>
+      <div class="mt-4 gap-x-4 flex flex-row">
+        <a href="https://github.com/ItsHarta" title="Github" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:github" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Github" />
+        </a>
+        <a href="https://linkedin.com/in/angkasa-harta" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:linkedin" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="LinkedIn" />
+        </a>
+        <a href="https://www.instagram.com/asthene.ha/" title="Instagram" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:instagram" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Instagram" />
+        </a>
+        <a href="https://discordapp.com/users/383910339777003533" title="Discord" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:discord" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Discord" />
+        </a>
+        <a href="https://wa.me/+6281905310000" title="Whatsapp" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:whatsapp" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Whatsapp"  />
+        </a>
+        <a href="mailto:contact@asthene.com" title="Email" rel="noopener noreferrer">
+          <Icon name="mdi:gmail" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Email" />
+      </a>
+      </div>
     </div>
   </header>
   <section class="mt-10 sm:mt-28" aria-labelledby="section-title">
@@ -44,6 +68,7 @@ import { author } from "@data/socials";
     >
       About Me
     </h2>
+    <!-- Credentials and Educations -->
     <h3
       class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
       id="section-subtitle">
@@ -53,36 +78,55 @@ import { author } from "@data/socials";
     <p
       class="max-w-prose my-4 font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 leading-relaxed"
     >
-      A collection of my credentials and professional certifications:
+      A list of my credentials and professional certifications:
     </p>
     <ul class="mb-12">
       <li class="flex flex-col mb-8 last:mb-0" id="credentials">
-        <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
-          Education
+        <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-xl font-semibold tracking-tight">
+          Educations
         </h3>
         <ul class="grid gap-4">
           <li>
             <span class="dark:text-zinc-400 text-zinc-600">
-              Bachelor's Degree - Cyber Security <span class="float-right">Binus University</span>
-              <br>GPA: 3.88
+              <span class="font-semibold dark:text-zinc-300 text-zinc-700">Binus University </span><span class="float-right">2020-2024</span>
+              <br><span class="italic">Cyber Security - Bachelor's Degree</span>
             </span>
           </li>
         </ul>
-
       </li>
-      {Object.entries(credentials).map(([category, techList]) => (
+      {Object.entries(credentials).map(([category, credList]) => (
         <li class="flex flex-col mb-8 last:mb-0" id={category}>
-          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
+          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-xl font-semibold tracking-tight">
             {category}
           </h3>
-          <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3">
-            {techList.map((tech, index) => (
-              <Skill key={index.toString()} {...tech} />
+          <ul class="grid grid-cols-2 gap-4 sm:grid-cols-1 md:grid-cols-2">
+            {credList.map((cred, index) => (
+              <Skill key={index.toString()} {...cred} />
             ))}
           </ul>
         </li>
       ))}
     </ul>
+
+    <!-- Work Experiences -->
+    <h3
+      class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
+      id="section-subtitle">
+      Work Experience
+    </h3>
+    <hr>
+    <p
+      class="max-w-prose my-4 font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 leading-relaxed"
+    >
+      My professional affiliations and list of companies i have worked with/for:
+    </p>
+    <ul class="mb-12">
+      {Object.entries(works).map(([index, work]) => (
+          <Work key={index.toString()} {...work} />
+      ))}
+    </ul>
+
+    <!-- Skills and Expertise -->
     <h3
       class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
       id="section-subtitle">
@@ -97,7 +141,7 @@ import { author } from "@data/socials";
     <ul>
       {Object.entries(technologies).map(([category, techList]) => (
         <li class="flex flex-col mb-8 last:mb-0" id={category}>
-          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
+          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-xl font-semibold tracking-tight">
             {category}
           </h3>
           <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3">

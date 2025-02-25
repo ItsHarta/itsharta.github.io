@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Programmer",
+        "company": "Bina Nusantara - IT Division",
+        "year": "2023 - Present",
+        "desc": "Responsible for providing software solutions, performing maintenances, code reviews, mentoring, and maintaining internal coding guidelines, standards, and best practices. Aside from development activies, i also oversee project deployment (both manual and automated via CI/CD) and DevOps operations."
+    },
+    {
+        "title": "Junior Programmer",
+        "company": "Bina Nusantara - IT Division",
+        "year": "2022 - 2023",
+        "desc": "Responsible for providing software solutions and performing maintenances. I am responsible for day-to-day bug fixing, responding to tickets / reports, and ensuring best-practice implementations in ongoing projects."
+    },
+    {
+        "title": "Associate Developer",
+        "company": "Bina Nusantara - IT Division",
+        "year": "2021 - 2022",
+        "desc": "I am mainly tasked with exploring technology stacks to be used in projects and development activities. I also help developers write modules, create unit tests, and performing manual tests."
+    }
+]
