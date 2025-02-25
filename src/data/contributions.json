@@ -1,8 +1,19 @@
 [
   {
+    "name": "PHP Shellscan",
+    "url": "-",
+    "description": "Platform-agnostic python tool for detecting common obfuscated PHP webshells using static code analysis and YARA signatures. Built for my bachelor's degree thesis.",
+    "languages": [
+      "Python",
+      "YARA",
+      "bash"
+    ],
+    "role": "author|maintainer"
+  },
+  {
     "name": "SIAGA",
     "url": "Kemendiktisaintek - Kelembagaan",
-    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "description": "One-stop web service for Ministry of Higher Education, Science, and Technology - Directorate of Institution.",
     "website": "https://siaga.kemdikbud.go.id/",
     "languages": [
       "Confidential"
@@ -12,9 +23,10 @@
   {
     "name": "Binus Alumni",
     "url": "Binus University",
-    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "description": "Binus University's internal alumni management web app.",
     "languages": [
       "React.js",
+      "Bootstrap",
       "NodeJS",
       "C#",
       ".NET Core"
@@ -24,7 +36,7 @@
   {
     "name": "Carolus Isoman",
     "url": "RS. Carolus",
-    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "description": "A web app for Carolus Hospital to manage COVID-19 isolation patients (such as self-reporting and status tracking).",
     "languages": [
       "Confidential"
     ],
@@ -33,16 +45,22 @@
   {
     "name": "Warehouse Management System",
     "url": "Synapsa Medikatama",
-    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "description": "An internal warehouse and stock management app to track mecidine/drug stocks, health equipments, and other inventories. Also tracks inventory movements between branches, sales, and stock audits.",
     "languages": [
-      "Confidential"
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "NGINX",
+      "JQuery",
+      "Bootstrap"
     ],
     "role": "contributor|maintainer"
   },
   {
     "name": "IGCN",
     "url": "IGCN",
-    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "website": "https://indonesiagcn.org/",
+    "description": "UN Global Compact Network Indonesia (IGCN)'s profile website.",
     "languages": [
       "Confidential"
     ],
@@ -51,7 +69,7 @@
   {
     "name": "ItsHarta/ItsHarta",
     "url": "-",
-    "description": "My Personal Website & Portofolio revamp, built with Astro.js and Tailwind CSS.",
+    "description": "My Personal Website & Portofolio page, overhauled & built with Astro.js and Tailwind CSS.",
     "languages": [
       "NodeJS",
       "JSON",
