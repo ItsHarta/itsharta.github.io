@@ -1,6 +1,7 @@
 ---
 import AppLayout from "@layouts/AppLayout.astro";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import authorImage from "../assets/me.png";
 import technologies from "@data/technologies.json";
 import credentials from "@data/credentials.json";
@@ -38,6 +39,26 @@ import { author } from "@data/socials";
         Aside from software development, i am also skilled in security engineering and information security management.
         I am also a tech enthusiast and a lifelong learner.
       </p>
+      <div class="mt-4 gap-x-4 flex flex-row">
+        <a href="https://github.com/ItsHarta" title="Github" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:github" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Github" />
+        </a>
+        <a href="https://linkedin.com/in/angkasa-harta" title="LinkedIn" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:linkedin" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="LinkedIn" />
+        </a>
+        <a href="https://www.instagram.com/asthene.ha/" title="Instagram" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:instagram" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Instagram" />
+        </a>
+        <a href="https://discordapp.com/users/383910339777003533" title="Discord" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:discord" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Discord" />
+        </a>
+        <a href="https://wa.me/+6281905310000" title="Whatsapp" target="_blank" rel="noopener noreferrer">
+          <Icon name="mdi:whatsapp" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Whatsapp"  />
+        </a>
+        <a href="mailto:contact@asthene.com" title="Email" rel="noopener noreferrer">
+          <Icon name="mdi:gmail" class="text-3xl dark:text-zinc-300 dark:hover:text-zinc-300/75 text-zinc-700 hover:text-zinc-700/75" title="Email" />
+      </a>
+      </div>
     </div>
   </header>
   <section class="mt-10 sm:mt-28" aria-labelledby="section-title">

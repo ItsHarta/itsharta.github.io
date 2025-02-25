@@ -9,7 +9,7 @@
 
 ## 🚀 Project Overview
 
-A revised portofolio web built using astro and tailwind
+A revised portofolio web built using Astro.js and TailwindCSS. Design by [David Cojocaru](https://github.com/cojocaru-david/cojocarudavid.me). Migrated to Astro.js 5, Vite 6 and TailwindCSS 4
 
 ## 🛠️ Technologies Used
 
@@ -67,10 +67,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 💬 Contact
 
-Feel free to reach out to me at [me@asthene.com](mailto:me@asthene.com).
+Feel free to reach out to me at [contact@asthene.com](mailto:contact@asthene.com).
 
 ## 🙏 Acknowledgments
 
 - [Astro.js](https://astro.build/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [GitHub Actions](https://github.com/features/actions)
+- [David Cojocaru](https://github.com/cojocaru-david/cojocarudavid.me)
