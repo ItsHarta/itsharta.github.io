@@ -1,4 +1,4 @@
-# Itsharta.Github.Io
+# Itsharta.github.io
 
 [![Build Status](https://github.com/ItsHarta/itsharta.github.io/actions/workflows/astro.yml/badge.svg)](https://github.com/ItsHarta/itsharta.github.io/actions/workflows/astro.yml)
 [![CodeQL](https://github.com/ItsHarta/itsharta.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/ItsHarta/itsharta.github.io/actions/workflows/github-code-scanning/codeql)
