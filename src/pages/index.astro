@@ -63,7 +63,7 @@ import { author } from "@data/socials";
         <ul class="grid gap-4">
           <li>
             <span class="dark:text-zinc-400 text-zinc-600">
-              Bachelor's Degree - Cyber Security <span class="float-right">Binus University</span>
+              <span class="font-semibold">Bachelor's Degree - Cyber Security </span><span class="float-right">Binus University</span>
               <br>GPA: 3.88
             </span>
           </li>
@@ -75,7 +75,7 @@ import { author } from "@data/socials";
           <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
             {category}
           </h3>
-          <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3">
+          <ul class="grid grid-cols-2 gap-4 sm:grid-cols-1 md:grid-cols-2">
             {techList.map((tech, index) => (
               <Skill key={index.toString()} {...tech} />
             ))}
