@@ -38,7 +38,7 @@ export async function GET(context: APIContext) {
       <div tw="w-full h-1/5 border-t border-zinc-700/50 flex p-10 items-center justify-between text-2xl">
       
         <div tw="flex items-center">
-          <span tw="ml-3 text-zinc-500">me.asthene.com</span>
+          <span tw="ml-3 text-zinc-500">profile.asthene.com</span>
         </div>
 
         <div tw="flex items-center bg-zinc-800/50 rounded-lg px-4 py-2">
