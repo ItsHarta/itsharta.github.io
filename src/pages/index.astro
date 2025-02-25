@@ -99,7 +99,7 @@ import { author } from "@data/socials";
           <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-xl font-semibold tracking-tight">
             {category}
           </h3>
-          <ul class="grid grid-cols-2 gap-4 sm:grid-cols-1 md:grid-cols-2">
+          <ul class="grid grid-cols-1 gap-4 sm:grid-cols-1 md:grid-cols-2">
             {credList.map((cred, index) => (
               <Skill key={index.toString()} {...cred} />
             ))}
