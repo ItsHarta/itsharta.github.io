@@ -1,0 +1,169 @@
+{
+  "Programming and Scripting Languages": [
+    {
+      "text": "HTML",
+      "logo": "mdi:language-html5"
+    },
+    {
+      "text": "JavaScript",
+      "logo": "mdi:language-javascript"
+    },
+    {
+      "text": "Typescript",
+      "logo": "mdi:language-typescript"
+    },
+    {
+      "text": "CSS",
+      "logo": "mdi:language-css3"
+    },
+    {
+      "text": "PHP",
+      "logo": "mdi:language-php"
+    },
+    {
+      "text": "C#",
+      "logo": "mdi:language-csharp"
+    },
+    {
+      "text": "C",
+      "logo": "mdi:language-c"
+    },
+    {
+      "text": "C++",
+      "logo": "mdi:language-cpp"
+    },
+    {
+      "text": "Python",
+      "logo": "mdi:language-python"
+    },
+    {
+      "text": "Bash",
+      "logo": "mdi:bash"
+    }
+  ],
+  "Frontend Web Frameworks": [
+
+    {
+      "text": "Tailwind CSS",
+      "logo": "mdi:tailwind"
+    },
+    {
+      "text": "Bootstrap CSS",
+      "logo": "mdi:bootstrap"
+    },
+    {
+      "text": "Astro",
+      "logo": "simple-icons:astro"
+    },
+    {
+      "text": "React.js",
+      "logo": "mdi:react"
+    },
+    {
+      "text": "Vue.js",
+      "logo": "mdi:vuejs"
+    },
+    {
+      "text": "Nuxt.js",
+      "logo": "mdi:nuxt"
+    },
+    {
+      "text": "JQuery",
+      "logo": "mdi:jquery"
+    }
+  ],
+  "Backend Web Frameworks": [
+
+    {
+      "text": "C# .NET / .NET Core",
+      "logo": "mdi:dot-net"
+    },
+    {
+      "text": "Laravel",
+      "logo": "mdi:laravel"
+    },
+    {
+      "text": "Symfony",
+      "logo": "mdi:symfony"
+    }
+  ],
+  "Databases": [
+    {
+      "text": "Microsoft SQL Server",
+      "logo": "mdi:database-outline"
+    },
+    {
+      "text": "MySQL",
+      "logo": "cib:mysql"
+    },
+    {
+      "text": "MongoDB",
+      "logo": "cib:mongodb"
+    }
+  ],
+  "Cloud, DevOps, Infrastructure, Web Services": [
+    {
+      "text": "Microsoft Azure DevOps",
+      "logo": "mdi:microsoft-azure-devops"
+    },
+    {
+      "text": "Cloudflare",
+      "logo": "cib:cloudflare"
+    },
+    {
+      "text": "Github Actions",
+      "logo": "simple-icons:githubactions"
+    },
+    {
+      "text": "Apache",
+      "logo": "cib:apache"
+    },
+    {
+      "text": "Nginx",
+      "logo": "cib:nginx"
+    }
+  ],
+  "Development Tools": [
+    {
+      "text": "Git",
+      "logo": "mdi:git"
+    },
+    {
+      "text": "Team Foundation Server",
+      "logo": "mdi:visual-studio"
+    }
+
+  ],
+  "Operating Systems": [
+    {
+      "text": "Windows",
+      "logo": "mdi:windows"
+    },
+    {
+      "text": "Debian",
+      "logo": "mdi:debian"
+    },
+    {
+      "text": "Ubuntu",
+      "logo": "mdi:ubuntu"
+    },
+    {
+      "text": "Kali Linux",
+      "logo": "simple-icons:kalilinux"
+    }
+  ],
+  "Security Standards": [
+    {
+      "text": "OWASP ASVS/WSTG",
+      "logo": "simple-icons:owasp"
+    },
+    {
+      "text": "NIST CSF",
+      "logo": "mdi:security"
+    },
+    {
+      "text": "ISO 27001",
+      "logo": "mdi:web"
+    }
+  ]
+}

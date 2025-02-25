@@ -1,0 +1,65 @@
+[
+  {
+    "name": "SIAGA",
+    "url": "Kemendiktisaintek - Kelembagaan",
+    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "website": "https://siaga.kemdikbud.go.id/",
+    "languages": [
+      "Confidential"
+    ],
+    "role": "contributor|maintainer"
+  },
+  {
+    "name": "Binus Alumni",
+    "url": "Binus University",
+    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "languages": [
+      "React.js",
+      "NodeJS",
+      "C#",
+      ".NET Core"
+    ],
+    "role": "contributor"
+  },
+  {
+    "name": "Carolus Isoman",
+    "url": "RS. Carolus",
+    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "languages": [
+      "Confidential"
+    ],
+    "role": "contributor"
+  },
+  {
+    "name": "Warehouse Management System",
+    "url": "Synapsa Medikatama",
+    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "languages": [
+      "Confidential"
+    ],
+    "role": "contributor|maintainer"
+  },
+  {
+    "name": "IGCN",
+    "url": "IGCN",
+    "description": "Blazing fast personal website built with Astro.js and styled with Tailwind CSS.",
+    "languages": [
+      "Confidential"
+    ],
+    "role": "maintainer"
+  },
+  {
+    "name": "ItsHarta/ItsHarta",
+    "url": "-",
+    "description": "My Personal Website & Portofolio revamp, built with Astro.js and Tailwind CSS.",
+    "languages": [
+      "NodeJS",
+      "JSON",
+      "Astro.js",
+      "Typescript",
+      "Tailwind CSS",
+      "Markdown"
+    ],
+    "role": "author|maintainer"
+  }
+]

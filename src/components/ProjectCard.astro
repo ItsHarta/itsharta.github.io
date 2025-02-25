@@ -1,0 +1,64 @@
+---
+import Badge from "@components/Badge.astro";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  name: string;
+  role: "author" | "contributor" | "maintainer";
+  client: string;
+  description: string | null;
+  languages: string[];
+  website: string | null;
+}
+
+const colors = {
+  maintainer: "pink",
+  author: "blue",
+  contributor: "green",
+} as const;
+
+const { name, role, client, description, languages, website } = Astro.props;
+const rolelist = role.includes("|") ? role.split("|") : [role];
+---
+
+<li
+  class="dark:text-zinc-400 text-zinc-500 gap-1 p-6 border dark:border-zinc-700/60 rounded-lg flex flex-col bg-opacity-40 dark:bg-opacity-40 bg-zinc-50 dark:bg-zinc-800"
+>
+  <div class="flex justify-between">
+    <div class="flex flex-col sm:flex-row sm:items-baseline gap-2">
+      <h2
+        class="text-2xl font-medium dark:text-white text-zinc-700 [word-break:break-word]"
+      >
+        {name}
+      </h2>
+      {rolelist.map((role) => (
+        <Badge text={role} color={colors[role]} />
+      ))}
+    </div>
+    <div class="flex gap-2">
+      <span class="text-md font-light dark:text-white text-zinc-700 [word-break:break-word] text-right">{client}</span>
+    </div>
+    
+  </div>
+  {website && (
+    <div class="flex-gap-2">
+      <a href={website} class="text-zinc-200 hover:text-zinc-500">
+        <Icon
+          name="mdi:eye-outline"
+          class="inline w-6 fill-current"
+        />
+        Visit Project
+      </a>
+    </div>
+  )}
+  {description && <p class="leading-relaxed">{description}</p>}
+  <ul class="flex flex-wrap gap-2 mt-2">
+    {
+      languages.map((item) => (
+        <li class="dark:bg-zinc-700 bg-zinc-100 text-zinc-600 dark:text-zinc-300 rounded-md px-2 py-1 text-sm">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+</li>
