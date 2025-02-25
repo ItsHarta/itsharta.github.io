@@ -1,0 +1,112 @@
+---
+import AppLayout from "@layouts/AppLayout.astro";
+import { Image } from "astro:assets";
+import authorImage from "../assets/me.png";
+import technologies from "@data/technologies.json";
+import credentials from "@data/credentials.json";
+import Skill from "@components/Skill.astro";
+import { author } from "@data/socials";
+---
+
+<AppLayout title="Harta Angkasa">
+  <header class="sm:flex sm:items-center sm:justify-between">
+    <div class="rounded aspect-square w-40 overflow-hidden inline-flex drop-shadow-none lg:drop-shadow-[0px_0px_35px_rgba(83,70,250,0.90)]">
+      <Image
+        src={authorImage}
+        alt="Author"
+        loading="eager"
+        width={320}
+        height={320}
+      />
+    </div>
+    <div class="mt-8 max-w-lg 2xl:max-w-xl sm:my-0 sm:order-first">
+      <h1
+        class="mb-2 text-3xl font-bold tracking-tight dark:text-white text-zinc-900 sm:text-4xl"
+      >
+        {author}
+      </h1>
+      <p class="mb-4 dark:text-zinc-300 text-zinc-700 flex items-center">
+        Full Stack Software and Information Security Engineer
+      </p>
+      <p
+        class="max-w-prose font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 sm:max-w-sm md:max-w-xl leading-relaxed"
+      >
+        I am a full-stack software engineer with a strong background in cybersecurity. 
+        Aside from software development, i am also skilled in security engineering and information security management.
+        I am also a tech enthusiast and a lifelong learner.
+      </p>
+    </div>
+  </header>
+  <section class="mt-10 sm:mt-28" aria-labelledby="section-title">
+    <h2
+      class="dark:text-zinc-300 text-zinc-700 mb-8 text-4xl font-bold tracking-tight"
+      id="section-title"
+    >
+      About Me
+    </h2>
+    <h3
+      class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
+      id="section-subtitle">
+      Credentials
+    </h3>
+    <hr>
+    <p
+      class="max-w-prose my-4 font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 leading-relaxed"
+    >
+      A collection of my credentials and professional certifications:
+    </p>
+    <ul class="mb-12">
+      <li class="flex flex-col mb-8 last:mb-0" id="credentials">
+        <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
+          Education
+        </h3>
+        <ul class="grid gap-4">
+          <li>
+            <span class="dark:text-zinc-400 text-zinc-600">
+              Bachelor's Degree - Cyber Security <span class="float-right">Binus University</span>
+              <br>GPA: 3.88
+            </span>
+          </li>
+        </ul>
+
+      </li>
+      {Object.entries(credentials).map(([category, techList]) => (
+        <li class="flex flex-col mb-8 last:mb-0" id={category}>
+          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
+            {category}
+          </h3>
+          <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3">
+            {techList.map((tech, index) => (
+              <Skill key={index.toString()} {...tech} />
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+    <h3
+      class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
+      id="section-subtitle">
+      Skills and Expertise
+    </h3>
+    <hr>
+    <p
+      class="max-w-prose my-4 font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 leading-relaxed"
+    >
+      Here are some of the technologies I have been working with:
+    </p>
+    <ul>
+      {Object.entries(technologies).map(([category, techList]) => (
+        <li class="flex flex-col mb-8 last:mb-0" id={category}>
+          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
+            {category}
+          </h3>
+          <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3">
+            {techList.map((tech, index) => (
+              <Skill key={index.toString()} {...tech} />
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </section>
+</AppLayout>

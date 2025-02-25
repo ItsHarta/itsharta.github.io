@@ -1,44 +1,69 @@
-# itsharta.github.io
-Portofolio Page Project
+# Itsharta.Github.Io
 
-## Changelog
+## 🚀 Project Overview
 
-- 09/12/2020  
-Initial Commit
-  
-- 10/12/2020  
-  - fixed minor coloring error on a
-  - added typing text effect based on JS for main section
-  - fixed minor error in bootstrap's css sheet
-  
-- 11/12/2020
-  - fixed close button missing on vertical display
-  - changed menu style for mobile display (<480px)
-  - adjusted menu positioning on medium display (480-720px)
-  
-- 12/12/2020
-  - fixed link for resume download
-  - fixed css for resume download button
-  
-- 19/12/2020
-  - updated skill list
-  - code cleanup
-  - documentation change
-- 21/12/2020
-  - documentation cleanup
-- 25/12/2020
-  - updated skill set
-  - tidying up index page
-- 15/01/2021
-  - tidying up codes
-- 18/01/2021
-  - hold resume
-  - code cleanup
-- 03/03/2021
-  - information change
-  - minor bugfix
-- 28/05/2021
-  - Change domain to me.asthene.live
-- 02/10/2022
-  - Change domain to me.asthene.com
-  - Information updates
+A revised portofolio web built using astro and tailwind
+
+## 🛠️ Technologies Used
+
+- **Astro.js** - Static site generator.
+- **Tailwind CSS** - Utility-first CSS framework.
+- **TypeScript** - Typed JavaScript at Any Scale.
+- **JavaScript** - High-level, often just-in-time compiled, and multi-paradigm.
+- **CSS** - Cascading Style Sheets.
+
+## 📚 Documentation
+
+### Prerequisites
+
+- Node.js and npm installed.
+- Git installed.
+
+### Setup
+
+1. **Clone the repository:**
+
+   ```sh
+   git clone https://github.com/itsharta/itsharta.github.io.git
+   ```
+
+2. **Install dependencies:**
+
+   ```sh
+   cd itsharta.github.io
+   npm install
+   ```
+
+3. **Run the development server:**
+
+   ```sh
+   npm run dev
+   ```
+
+### Usage
+
+- **Build for production:**
+
+  ```sh
+  npm run build
+  ```
+
+- **Deploy:**
+
+  ```sh
+  npm run deploy
+  ```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 💬 Contact
+
+Feel free to reach out to me at [me@asthene.com](mailto:me@asthene.com).
+
+## 🙏 Acknowledgments
+
+- [Astro.js](https://astro.build/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [GitHub Actions](https://github.com/features/actions)

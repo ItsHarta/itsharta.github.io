@@ -1,0 +1,45 @@
+---
+import AppLayout from "@layouts/AppLayout.astro";
+import Header from "@components/Header.astro";
+import data from "@data/contributions.json";
+import ProjectCard from "@components/ProjectCard.astro";
+
+interface Project {
+  name: string;
+  description: string;
+  role: "author" | "contributor" | "maintainer";
+  url: string;
+  languages: string[];
+  website?: string;
+}
+
+const contributions = data as Project[];
+
+const description = "I have contributed to multiple projects of different scales. Here are some of the projects I have worked on in the past.";
+
+---
+
+<AppLayout title="Harta Angkasa" 
+           tags={["projects", "contributions", "github", "harta angkasa", "harta", "angkasa", "itsharta", "indonesia", "developer", "software engineer", "software developer", "software engineering", "software development", "web developer", "web development", "full stack", "full stack developer", "security engineer", "information security"]}
+           description={description}>
+  <Header title="Past Projects" />
+  <p
+    class="max-w-prose mb-10 font-normal dark:text-zinc-400 text-zinc-600 leading-relaxed"
+  >
+    {description}
+  </p>
+  <ul class="grid grid-cols-1 gap-8">
+    {
+      contributions.map((project) => (
+        <ProjectCard
+          name={project.name}
+          description={project.description}
+          role={project.role}
+          client={project.url}
+          languages={project.languages}
+          website={project.website || ""}
+        />
+      ))
+    }
+  </ul>
+</AppLayout>
