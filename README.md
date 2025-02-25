@@ -2,6 +2,10 @@
 
 [![Build Status](https://github.com/ItsHarta/itsharta.github.io/actions/workflows/astro.yml/badge.svg)](https://github.com/ItsHarta/itsharta.github.io/actions/workflows/astro.yml)
 [![CodeQL](https://github.com/ItsHarta/itsharta.github.io/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/ItsHarta/itsharta.github.io/actions/workflows/github-code-scanning/codeql)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fme.asthene.com)  
+![Dependabot](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2FItsHarta%2Fitsharta.github.io%2Frefs%2Fheads%2Fmain%2F.github%2Fdependabot.yml&query=%24.version&label=dependabot&prefix=v)
+![Release](https://img.shields.io/github/v/release/itsharta/itsharta.github.io)
+![License](https://img.shields.io/github/license/itsharta/itsharta.github.io)
 
 ## 🚀 Project Overview
 
