@@ -4,11 +4,14 @@ import { Image } from "astro:assets";
 import authorImage from "../assets/me.png";
 import technologies from "@data/technologies.json";
 import credentials from "@data/credentials.json";
+import works from "@data/works.json";
 import Skill from "@components/Skill.astro";
+import Work from "@components/Work.astro";
 import { author } from "@data/socials";
 ---
 
 <AppLayout title="Harta Angkasa">
+  <!-- Page Header -->
   <header class="sm:flex sm:items-center sm:justify-between">
     <div class="rounded aspect-square w-40 overflow-hidden inline-flex drop-shadow-none lg:drop-shadow-[0px_0px_35px_rgba(83,70,250,0.90)]">
       <Image
@@ -44,6 +47,7 @@ import { author } from "@data/socials";
     >
       About Me
     </h2>
+    <!-- Credentials and Educations -->
     <h3
       class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
       id="section-subtitle">
@@ -53,36 +57,55 @@ import { author } from "@data/socials";
     <p
       class="max-w-prose my-4 font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 leading-relaxed"
     >
-      A collection of my credentials and professional certifications:
+      A list of my credentials and professional certifications:
     </p>
     <ul class="mb-12">
       <li class="flex flex-col mb-8 last:mb-0" id="credentials">
-        <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
-          Education
+        <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-xl font-semibold tracking-tight">
+          Educations
         </h3>
         <ul class="grid gap-4">
           <li>
             <span class="dark:text-zinc-400 text-zinc-600">
-              <span class="font-semibold">Bachelor's Degree - Cyber Security </span><span class="float-right">Binus University</span>
-              <br>GPA: 3.88
+              <span class="font-semibold dark:text-zinc-300 text-zinc-700">Binus University </span><span class="float-right">2020-2024</span>
+              <br><span class="italic">Cyber Security - Bachelor's Degree</span>
             </span>
           </li>
         </ul>
-
       </li>
-      {Object.entries(credentials).map(([category, techList]) => (
+      {Object.entries(credentials).map(([category, credList]) => (
         <li class="flex flex-col mb-8 last:mb-0" id={category}>
-          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
+          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-xl font-semibold tracking-tight">
             {category}
           </h3>
           <ul class="grid grid-cols-2 gap-4 sm:grid-cols-1 md:grid-cols-2">
-            {techList.map((tech, index) => (
-              <Skill key={index.toString()} {...tech} />
+            {credList.map((cred, index) => (
+              <Skill key={index.toString()} {...cred} />
             ))}
           </ul>
         </li>
       ))}
     </ul>
+
+    <!-- Work Experiences -->
+    <h3
+      class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
+      id="section-subtitle">
+      Work Experience
+    </h3>
+    <hr>
+    <p
+      class="max-w-prose my-4 font-normal text-sm md:text-lg dark:text-zinc-400 text-zinc-600 leading-relaxed"
+    >
+      My professional affiliations and list of companies i have worked with/for:
+    </p>
+    <ul class="mb-12">
+      {Object.entries(works).map(([index, work]) => (
+          <Work key={index.toString()} {...work} />
+      ))}
+    </ul>
+
+    <!-- Skills and Expertise -->
     <h3
       class="dark:text-zinc-300 text-zinc-700 mb-4 text-2xl font-bold tracking-tight"
       id="section-subtitle">
@@ -97,7 +120,7 @@ import { author } from "@data/socials";
     <ul>
       {Object.entries(technologies).map(([category, techList]) => (
         <li class="flex flex-col mb-8 last:mb-0" id={category}>
-          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-lg font-semibold tracking-tight">
+          <h3 class="dark:text-zinc-300 text-zinc-700 mb-4 text-xl font-semibold tracking-tight">
             {category}
           </h3>
           <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3">
