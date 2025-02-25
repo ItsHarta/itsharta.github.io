@@ -8,7 +8,7 @@ import icon from "astro-icon";
 // https://astro.build/config
 export default defineConfig({
   integrations: [mdx(), icon(), compressor()],
-  site: "https://me.asthene.com",
+  site: "https://profile.asthene.com",
   vite: {
     plugins: [rawFonts([".ttf", ".woff"]), tailwindcss()],
     optimizeDeps: {
