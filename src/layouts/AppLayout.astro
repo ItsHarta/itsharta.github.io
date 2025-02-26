@@ -3,8 +3,10 @@ import Link from "@components/Link.astro";
 import { author, defaultMeta } from "@data/socials";
 import navigation from "@data/navigation.json";
 import "@fontsource-variable/inter";
+import Theme from "@components/Theme.astro";
 import Footer from "@components/Footer.astro";  
 import "@styles/global.css";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   title?: string;
@@ -84,7 +86,7 @@ const canonicalURL = new URL(Astro.url).href;
     >
     <!-- empty element to pad the grid -->
       <div class="w-31" />
-      <ul class="flex justify-center space-x-4 text-sm pt-2 pb-6 sm:pt-1 sm:pb-0">
+      <ul class="flex justify-center space-x-3 text-sm pt-2 sm:pt-1">
         {
           navigation.map((item) => (
             <li>
@@ -92,79 +94,11 @@ const canonicalURL = new URL(Astro.url).href;
             </li>
           ))
         }
+        <li class="sm:hidden">
+          <Icon name="mdi:theme-light-dark" class="cursor-pointer text-xl text-zinc-300" id="light-dark-selector" />
+        </li>
       </ul>
-      <div class="flex flex-wrap justify-self-center items-center gap-2 sm:justify-self-end sm:mr-6">
-        <button
-          id="light-theme-button"
-          aria-label="Light theme"
-          class="cursor-pointer group flex size-9 items-center justify-center rounded border border-zinc-300/20 hover:bg-zinc-300/5 focus-visible:bg-zinc-300/5"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-focus-visible:animate-pulse stroke-zinc-300 group-hover:stroke-zinc-300 group-focus-visible:stroke-zinc-300"
-          >
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
-        <button
-          id="dark-theme-button"
-          aria-label="Dark theme"
-          class="cursor-pointer group flex size-9 items-center justify-center rounded border border-zinc-300/20 hover:bg-zinc-300/5 focus-visible:bg-zinc-300/5"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-focus-visible:animate-pulse stroke-zinc-300 group-hover:stroke-zinc-300 group-focus-visible:stroke-zinc-300"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-        <button
-          id="system-theme-button"
-          aria-label="System theme"
-          class="cursor-pointer group flex size-9 items-center justify-center rounded border border-zinc-300/20 hover:bg-zinc-300/5 focus-visible:bg-zinc-300/5"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-focus-visible:animate-pulse stroke-zinc-300 group-hover:stroke-zinc-300 group-focus-visible:stroke-zinc-300"
-          >
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-        </button>
-      </div>
+      <Theme id="theme-selector" addClass="hidden sm:flex pt-6 sm:pt-0" />
     </nav>
     <main class="px-6 lg:px-0 mx-auto max-w-3xl flex flex-col min-h-screen py-6" id="main-content">
       <slot />
@@ -178,6 +112,23 @@ const canonicalURL = new URL(Astro.url).href;
       animate();
       updateThemeButtons();
 
+      const selector = document.getElementById("light-dark-selector");
+      const container = document.getElementById("theme-selector");
+      selector?.addEventListener("click", () => {
+        const isHidden = container.classList.contains("hidden");
+        if (isHidden) {
+          container.classList.add("flex");
+          container.classList.remove("hidden");
+          selector.classList.add("text-blue-500", "dark:text-blue-400");
+          selector.classList.remove("text-zinc-300");
+        }else{
+          container.classList.add("hidden");
+          container.classList.remove("flex");
+          selector.classList.add("text-zinc-300");
+          selector.classList.remove("text-blue-500", "dark:text-blue-400");
+        }
+      });
+      
       const lightThemeButton = document.getElementById("light-theme-button");
       lightThemeButton.addEventListener("click", () => {
         localStorage.setItem("theme", "light");
@@ -215,30 +166,41 @@ const canonicalURL = new URL(Astro.url).href;
       const systemThemeButton = document.getElementById("system-theme-button");
 
       function removeActiveButtonTheme(button) {
-        button?.classList.remove("bg-zinc-300/10");
+        button?.classList.remove("bg-zinc-300/10", "border-blue-500");
         button?.classList.add("border-zinc-300/20");
-        button?.classList.remove("border-blue-500");
         button?.querySelectorAll("svg").forEach((svg) => {
-          svg.classList.remove("stroke-blue-500", "dark:stroke-blue-400");
-          svg.classList.add("stroke-zinc-300");
-          svg.classList.remove("group-hover:stroke-blue-500", "dark:group-hover:stroke-blue-400");
-          svg.classList.add("group-hover:stroke-zinc-300");
-          svg.classList.remove("group-focus-visible:stroke-blue-500", "dark:group-focus-visible:stroke-blue-400");
-          svg.classList.add("group-focus-visible:stroke-zinc-300");
+          svg.classList.remove(
+            "stroke-blue-500", 
+            "dark:stroke-blue-400", 
+            "group-hover:stroke-blue-500", 
+            "dark:group-hover:stroke-blue-400", 
+            "group-focus-visible:stroke-blue-500", 
+            "dark:group-focus-visible:stroke-blue-400"
+          );
+          svg.classList.add(
+            "stroke-zinc-300", 
+            "group-hover:stroke-zinc-300", 
+            "group-focus-visible:stroke-zinc-300");
         });
       }
 
       function addActiveButtonTheme(button) {
-        button?.classList.add("bg-zinc-300/10");
+        button?.classList.add("bg-zinc-300/10", "border-blue-500");
         button?.classList.remove("border-zinc-300/20");
-        button?.classList.add("border-blue-500");
         button?.querySelectorAll("svg").forEach((svg) => {
-          svg.classList.add("stroke-blue-500", "dark:stroke-blue-400");
-          svg.classList.remove("stroke-zinc-300");
-          svg.classList.add("group-hover:stroke-blue-500", "dark:group-hover:stroke-blue-400");
-          svg.classList.remove("group-hover:stroke-zinc-300");
-          svg.classList.add("group-focus-visible:stroke-blue-500", "dark:group-focus-visible:stroke-blue-400");
-          svg.classList.remove("group-focus-visible:stroke-zinc-300");
+          svg.classList.add(
+            "stroke-blue-500", 
+            "dark:stroke-blue-400",
+            "group-hover:stroke-blue-500", 
+            "dark:group-hover:stroke-blue-400",
+            "group-focus-visible:stroke-blue-500", 
+            "dark:group-focus-visible:stroke-blue-400"
+          );
+          svg.classList.remove(
+            "stroke-zinc-300",
+            "group-hover:stroke-zinc-300",
+            "group-focus-visible:stroke-zinc-300"
+          );
         });
       }
 
