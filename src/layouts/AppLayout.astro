@@ -4,7 +4,7 @@ import { author, defaultMeta } from "@data/socials";
 import navigation from "@data/navigation.json";
 import "@fontsource-variable/inter";
 import Footer from "@components/Footer.astro";  
-import "../styles/global.css";
+import "@styles/global.css";
 
 interface Props {
   title?: string;
@@ -69,9 +69,9 @@ const canonicalURL = new URL(Astro.url).href;
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
-{
-  tags && tags.map((tag) => ( <meta property="article:tag" content={tag} /> ))
-}
+  {
+    tags && tags.map((tag) => ( <meta property="article:tag" content={tag} /> ))
+  }
   </head>
   <body
     class="dark:bg-zinc-900 bg-zinc-100 antialiased selection:bg-blue-300 selection:text-zinc-900 dark:selection:bg-blue-600 dark:selection:text-white 2xl:text-lg"
@@ -80,9 +80,11 @@ const canonicalURL = new URL(Astro.url).href;
 
   </div>
     <nav
-      class="sticky top-0 z-10 lg:backdrop-blur-lg bg-zinc-900 bg-opacity-90 lg:bg-opacity-50 py-4 px-6 lg:px-0"
+      class="sticky grid grid-flow-row sm:grid-flow-col top-0 z-10 lg:backdrop-blur-lg bg-zinc-900 bg-opacity-90 lg:bg-opacity-50 py-4 px-6 lg:px-0"
     >
-      <ul class="flex justify-center space-x-4 text-sm">
+    <!-- empty element to pad the grid -->
+      <div class="w-31" />
+      <ul class="flex justify-center space-x-4 text-sm pt-2 pb-6 sm:pt-1 sm:pb-0">
         {
           navigation.map((item) => (
             <li>
@@ -91,6 +93,78 @@ const canonicalURL = new URL(Astro.url).href;
           ))
         }
       </ul>
+      <div class="flex flex-wrap justify-self-center items-center gap-2 sm:justify-self-end sm:mr-6">
+        <button
+          id="light-theme-button"
+          aria-label="Light theme"
+          class="cursor-pointer group flex size-9 items-center justify-center rounded border border-zinc-300/20 hover:bg-zinc-300/5 focus-visible:bg-zinc-300/5"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-focus-visible:animate-pulse stroke-zinc-300 group-hover:stroke-zinc-300 group-focus-visible:stroke-zinc-300"
+          >
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button
+          id="dark-theme-button"
+          aria-label="Dark theme"
+          class="cursor-pointer group flex size-9 items-center justify-center rounded border border-zinc-300/20 hover:bg-zinc-300/5 focus-visible:bg-zinc-300/5"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-focus-visible:animate-pulse stroke-zinc-300 group-hover:stroke-zinc-300 group-focus-visible:stroke-zinc-300"
+          >
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+        <button
+          id="system-theme-button"
+          aria-label="System theme"
+          class="cursor-pointer group flex size-9 items-center justify-center rounded border border-zinc-300/20 hover:bg-zinc-300/5 focus-visible:bg-zinc-300/5"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="transition-colors duration-300 ease-in-out group-hover:animate-pulse group-focus-visible:animate-pulse stroke-zinc-300 group-hover:stroke-zinc-300 group-focus-visible:stroke-zinc-300"
+          >
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </button>
+      </div>
     </nav>
     <main class="px-6 lg:px-0 mx-auto max-w-3xl flex flex-col min-h-screen py-6" id="main-content">
       <slot />
@@ -98,3 +172,142 @@ const canonicalURL = new URL(Astro.url).href;
     </main>
   </body>
 </html>
+  <script is:inline>
+    function init() {
+      preloadTheme();
+      animate();
+      updateThemeButtons();
+
+      const lightThemeButton = document.getElementById("light-theme-button");
+      lightThemeButton.addEventListener("click", () => {
+        localStorage.setItem("theme", "light");
+        toggleTheme(false);
+        updateThemeButtons();
+      });
+
+      const darkThemeButton = document.getElementById("dark-theme-button");
+      darkThemeButton?.addEventListener("click", () => {
+        localStorage.setItem("theme", "dark");
+        toggleTheme(true);
+        updateThemeButtons();
+      });
+
+      const systemThemeButton = document.getElementById("system-theme-button");
+      systemThemeButton?.addEventListener("click", () => {
+        localStorage.setItem("theme", "system");
+        toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+        updateThemeButtons();
+      });
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (event) => {
+          if (localStorage.theme === "system") {
+            toggleTheme(event.matches);
+          }
+        });
+    }
+
+    function updateThemeButtons() {
+      const theme = localStorage.getItem("theme");
+      const lightThemeButton = document.getElementById("light-theme-button");
+      const darkThemeButton = document.getElementById("dark-theme-button");
+      const systemThemeButton = document.getElementById("system-theme-button");
+
+      function removeActiveButtonTheme(button) {
+        button?.classList.remove("bg-zinc-300/10");
+        button?.classList.add("border-zinc-300/20");
+        button?.classList.remove("border-blue-500");
+        button?.querySelectorAll("svg").forEach((svg) => {
+          svg.classList.remove("stroke-blue-500", "dark:stroke-blue-400");
+          svg.classList.add("stroke-zinc-300");
+          svg.classList.remove("group-hover:stroke-blue-500", "dark:group-hover:stroke-blue-400");
+          svg.classList.add("group-hover:stroke-zinc-300");
+          svg.classList.remove("group-focus-visible:stroke-blue-500", "dark:group-focus-visible:stroke-blue-400");
+          svg.classList.add("group-focus-visible:stroke-zinc-300");
+        });
+      }
+
+      function addActiveButtonTheme(button) {
+        button?.classList.add("bg-zinc-300/10");
+        button?.classList.remove("border-zinc-300/20");
+        button?.classList.add("border-blue-500");
+        button?.querySelectorAll("svg").forEach((svg) => {
+          svg.classList.add("stroke-blue-500", "dark:stroke-blue-400");
+          svg.classList.remove("stroke-zinc-300");
+          svg.classList.add("group-hover:stroke-blue-500", "dark:group-hover:stroke-blue-400");
+          svg.classList.remove("group-hover:stroke-zinc-300");
+          svg.classList.add("group-focus-visible:stroke-blue-500", "dark:group-focus-visible:stroke-blue-400");
+          svg.classList.remove("group-focus-visible:stroke-zinc-300");
+        });
+      }
+
+      removeActiveButtonTheme(lightThemeButton);
+      removeActiveButtonTheme(darkThemeButton);
+      removeActiveButtonTheme(systemThemeButton);
+
+      switch(theme){
+        case "light":
+          addActiveButtonTheme(lightThemeButton);
+          break;
+        case "dark":
+          addActiveButtonTheme(darkThemeButton);
+          break;
+        default:
+          addActiveButtonTheme(systemThemeButton);
+          break;
+      }
+    }
+
+    function animate() {
+      const animateElements = document.querySelectorAll(".animate");
+
+      animateElements.forEach((element, index) => {
+        setTimeout(() => {
+          element.classList.add("show");
+        }, index * 100);
+      });
+    }
+
+    function toggleTheme(dark) {
+      const css = document.createElement("style");
+
+      css.appendChild(
+        document.createTextNode(
+          `* {
+              -webkit-transition: none !important;
+              -moz-transition: none !important;
+              -o-transition: none !important;
+              -ms-transition: none !important;
+              transition: none !important;
+            }
+          `,
+        ),
+      );
+
+      document.head.appendChild(css);
+
+      if (dark) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
+      // window.getComputedStyle(css).opacity;
+      document.head.removeChild(css);
+    }
+
+    function preloadTheme() {
+      const userTheme = localStorage.theme;
+
+      if (userTheme === "light" || userTheme === "dark") {
+        toggleTheme(userTheme === "dark");
+      } else {
+        toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => init());
+    document.addEventListener("astro:after-swap", () => init());
+    preloadTheme();
+  </script>
