@@ -4,10 +4,18 @@ import mdx from '@astrojs/mdx';
 import compressor from "astro-compressor";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
+import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [mdx(), icon(), compressor()],
+  integrations: [
+    icon(),
+    expressiveCode({
+      themes: ["catppuccin-macchiato", "catppuccin-latte"]
+    }),
+    mdx(),
+    compressor()
+  ],
   site: "https://profile.asthene.com",
   vite: {
     plugins: [rawFonts([".ttf", ".woff"]), tailwindcss()],

@@ -134,13 +134,15 @@ const canonicalURL = new URL(Astro.url).href;
         localStorage.setItem("theme", "light");
         toggleTheme(false);
         updateThemeButtons();
+        document.documentElement.setAttribute("data-theme", "catppuccin-latte");
       });
-
+      
       const darkThemeButton = document.getElementById("dark-theme-button");
       darkThemeButton?.addEventListener("click", () => {
         localStorage.setItem("theme", "dark");
         toggleTheme(true);
         updateThemeButtons();
+        document.documentElement.setAttribute("data-theme", "catppuccin-macchiato");
       });
 
       const systemThemeButton = document.getElementById("system-theme-button");
@@ -251,8 +253,10 @@ const canonicalURL = new URL(Astro.url).href;
 
       if (dark) {
         document.documentElement.classList.add("dark");
+        document.documentElement.setAttribute("data-theme", "catppuccin-macchiato");
       } else {
         document.documentElement.classList.remove("dark");
+        document.documentElement.setAttribute("data-theme", "catppuccin-latte");
       }
 
       // window.getComputedStyle(css).opacity;
