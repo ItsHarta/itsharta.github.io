@@ -15,9 +15,10 @@ interface Props {
   url: string;
   updatedDate: Date | undefined;
   tags: string[];
+  readingTime: string;
 }
 
-const { title, description, image, imageAlt, pubDate, url, updatedDate, tags } =
+const { title, description, image, imageAlt, pubDate, url, updatedDate, tags, readingTime } =
   Astro.props;
 
 const ogImage = {
@@ -50,12 +51,15 @@ const fullPubDate = pubDate.toLocaleDateString("en", {
       {title}
     </h1>
     <div class="inline-flex items-center mb-8 justify-between align-middle flex-wrap gap-2">
-      <time
-      datetime={pubDate.toISOString()}
-      class="block text-center dark:text-zinc-400 text-zinc-600 mb-4 text-sm sm:text-base"
-    >
-      {fullPubDate}
-    </time>
+      <div>
+        <time
+          datetime={pubDate.toISOString()}
+          class="block text-center dark:text-zinc-400 text-zinc-600 mb-2 text-sm sm:text-base"
+        >
+          {fullPubDate}
+        </time>
+        <p class="dark:text-zinc-400 text-zinc-700 text-md">{ readingTime }</p>
+      </div>
     <div class="flex items-center gap-4">
       <div class="aspect-square rounded-full overflow-hidden">
         <Image

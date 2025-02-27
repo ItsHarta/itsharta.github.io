@@ -80,6 +80,9 @@ const canonicalURL = new URL(Astro.url).href;
   <body
     class="dark:bg-zinc-900 bg-zinc-100 antialiased selection:bg-blue-300 selection:text-zinc-900 dark:selection:bg-blue-600 dark:selection:text-white 2xl:text-lg"
     >
+  <div class="hidden w-screen bg-zinc-900 h-1.5" id="loader-container">
+    <div class="bg-blue-600 h-1.5 dark:bg-blue-500" style="width: 10%" id="loader-bar"></div>
+  </div>
   <div style={{ background: "linear-gradient(45deg, rgba(96, 122, 250, 0) 20.79%, rgba(96, 122, 250, 0.09) 40.92%, rgba(255,255,255, 0) 70.35%)" }} class="fixed top-0 left-0 w-full h-full pointer-events-none -z-1">
 
   </div>
@@ -277,5 +280,24 @@ const canonicalURL = new URL(Astro.url).href;
 
     document.addEventListener("DOMContentLoaded", () => init());
     document.addEventListener("astro:after-swap", () => init());
+    document.addEventListener('astro:before-preparation', event => {
+    const originalLoader = event.loader;
+    event.loader = async function() {
+      const container = document.getElementById("loader-container");
+      const bar = document.getElementById("loader-bar");
+      container.classList.remove("hidden");
+      container.classList.add("sticky");
+      const intv = setInterval(() => {
+        if(parseInt(bar.style.width) >= 90) {
+          clearInterval(intv);
+          return;
+        }
+        bar.style.width = `${parseInt(bar.style.width) + 1}%`;
+      }, 100);
+      await originalLoader();
+      clearInterval(intv);
+      stop();
+    };
+  });
     preloadTheme();
   </script>
