@@ -22,6 +22,9 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"]
     }
+  },
+  experimental: {
+    clientPrerender: true
   }
 });
 
