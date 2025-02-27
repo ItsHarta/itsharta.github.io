@@ -7,6 +7,7 @@ import Theme from "@components/Theme.astro";
 import Footer from "@components/Footer.astro";  
 import "@styles/global.css";
 import { Icon } from "astro-icon/components";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title?: string;
@@ -36,6 +37,7 @@ const canonicalURL = new URL(Astro.url).href;
       class="overflow-x-hidden break-words text-zinc-900 dark:text-zinc-100 dark"
 >
   <head>
+    <ClientRouter />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title || defaultMeta.title}</title>
@@ -71,9 +73,9 @@ const canonicalURL = new URL(Astro.url).href;
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
-  {
-    tags && tags.map((tag) => ( <meta property="article:tag" content={tag} /> ))
-  }
+    {
+      tags && tags.map((tag) => ( <meta property="article:tag" content={tag} /> ))
+    }
   </head>
   <body
     class="dark:bg-zinc-900 bg-zinc-100 antialiased selection:bg-blue-300 selection:text-zinc-900 dark:selection:bg-blue-600 dark:selection:text-white 2xl:text-lg"
