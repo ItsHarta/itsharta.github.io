@@ -1,4 +1,4 @@
-# Security Policy for cojocarudavid.me
+# Security Policy for profile.asthene.com
 
 ## 1. Supported Versions
 
