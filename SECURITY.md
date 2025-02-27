@@ -1,4 +1,4 @@
-# Security Policy for itsharta.github.io
+# Security Policy for cojocarudavid.me
 
 ## 1. Supported Versions
 
@@ -13,9 +13,11 @@ We release patches for security vulnerabilities. Which versions are eligible rec
 
 ## 2. Reporting a Vulnerability
 
-We take security very seriously. If you discover a security vulnerability within itsharta.github.io, please send an email to the project team at contact@asthene.com instead of using the public issue tracker so we can work on a fix in advance of the vulnerability being disclosed publicly.
+We take security very seriously. If you discover a security vulnerability within profile.asthene.com, please send an email to the team at contact@asthene.com instead of using the public issue tracker so we can work on a fix in advance of the vulnerability being disclosed publicly.
 
-Your efforts to responsibly disclose your findings are sincerely appreciated and will be taken into account to acknowledge your contributions.
+Your efforts to responsibly disclose your findings are sincerely appreciated and will be taken into account to acknowledge your contributions.  
+
+The public encryption key for me@asthene.com can be found [here](https://keys.openpgp.org/vks/v1/by-fingerprint/4D32C91172BA04DD710273175430B27404286AA5).
 
 ## 3. Disclosure Policy
 
