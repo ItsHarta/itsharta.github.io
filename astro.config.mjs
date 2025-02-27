@@ -5,6 +5,7 @@ import compressor from "astro-compressor";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
+import { remarkReadingTime } from "./remark-reading-time.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,6 +26,9 @@ export default defineConfig({
   },
   experimental: {
     clientPrerender: true
+  },
+  markdown: {
+    remarkPlugins: [remarkReadingTime]
   }
 });
 

@@ -5,9 +5,10 @@ interface Props {
   pubDate: Date;
   url: string;
   tags: string[];
+  readingTime: string;
 }
 
-const { title, description, pubDate, url, tags } = Astro.props;
+const { title, description, pubDate, url, tags, readingTime } = Astro.props;
 
 const fullDate = pubDate.toLocaleDateString("en", {
   year: "numeric",
@@ -18,16 +19,17 @@ const fullDate = pubDate.toLocaleDateString("en", {
 ---
 
 <li
-  class="dark:text-zinc-400 text-zinc-500 gap-1 p-6 border dark:border-zinc-700/60 rounded-lg flex flex-col bg-opacity-40 dark:bg-opacity-40 bg-zinc-50 dark:bg-zinc-800"
+  class="dark:text-zinc-400 text-zinc-500 gap-1 p-6 border border-zinc-300/60 dark:border-zinc-700/60 rounded-lg flex flex-col bg-opacity-40 dark:bg-opacity-40 bg-zinc-50 dark:bg-zinc-800"
 >
   <a class="flex flex-col gap-2" href={url}>
     <div class="flex justify-between">
-      <div class="flex flex-col sm:flex-row sm:items-baseline gap-2">
+      <div class="flex flex-col sm:items-baseline gap-2">
         <h1
           class="text-lg font-medium dark:text-white text-zinc-700 [word-break:break-word]"
         >
           {title}
         </h1>
+        <p class="text-sm dark:text-zinc-400 text-zinc-600">{readingTime}</p>
       </div>
       <time
         datetime={pubDate.toISOString()}
@@ -45,7 +47,7 @@ const fullDate = pubDate.toLocaleDateString("en", {
       </p>
       <ul class="flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <li class="dark:bg-zinc-700 bg-zinc-100 text-zinc-600 dark:text-zinc-300 rounded-md px-2 py-1 text-sm">
+          <li class="dark:bg-zinc-700 bg-zinc-200 text-zinc-600 dark:text-zinc-300 rounded-md px-2 py-1 text-sm">
             {tag}
           </li>
         ))}
