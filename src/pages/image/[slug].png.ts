@@ -23,7 +23,7 @@ export async function GET(context: APIContext) {
   const date = pubDate.toLocaleDateString('en-US', { dateStyle: 'full' });
 
   const markup = html`
-    <div tw="bg-zinc-900 flex flex-col w-full h-full rounded-lg overflow-hidden shadow-lg text-white border border-zinc-700/50 divide-y divide-zinc-700/50 divide-solid">
+    <div tw="bg-zinc-900 flex flex-col w-full h-full rounded-lg overflow-hidden shadow-lg text-white border border-zinc-700/50">
 
       <div tw="flex flex-col w-full h-4/5 p-10 justify-center">
         <div tw="flex text-zinc-400 text-xl">
