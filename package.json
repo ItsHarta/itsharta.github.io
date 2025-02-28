@@ -8,8 +8,8 @@
     "format": "prettier -w '**/*.{js,jsx,cjs,ts,tsx,astro}'",
     "preview": "astro preview",
     "lint": "eslint . --max-warnings 0 --report-unused-disable-directives",
-    "check": "astro check",
-    "test:watch": "astro test --watch"
+    "test": "astro check",
+    "test:watch": "astro check --watch"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
