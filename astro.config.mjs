@@ -6,17 +6,13 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import expressiveCode from "astro-expressive-code";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    icon(),
-    expressiveCode({
-      themes: ["catppuccin-macchiato", "catppuccin-latte"]
-    }),
-    mdx(),
-    compressor()
-  ],
+  integrations: [icon(), expressiveCode({
+    themes: ["catppuccin-macchiato", "catppuccin-latte"]
+  }), mdx(), sitemap(), compressor()],
   site: "https://profile.asthene.com",
   vite: {
     plugins: [rawFonts([".ttf", ".woff"]), tailwindcss()],
