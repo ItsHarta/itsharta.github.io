@@ -118,6 +118,12 @@ const canonicalURL = new URL(Astro.url).href;
       animate();
       updateThemeButtons();
 
+      const currentYear = new Date().getFullYear();
+      const yearElement = document.getElementById('year');
+      if (yearElement) {
+          yearElement.innerText = currentYear.toString();
+      }
+
       const selector = document.getElementById("light-dark-selector");
       const container = document.getElementById("theme-selector");
       selector?.addEventListener("click", () => {
