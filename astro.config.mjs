@@ -1,4 +1,4 @@
-import { defineConfig, sharpImageService} from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 import { readFileSync } from "node:fs";
 import mdx from '@astrojs/mdx';
 import compressor from "astro-compressor";
