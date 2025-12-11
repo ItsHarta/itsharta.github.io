@@ -18,7 +18,7 @@ However, I came across a comment that made me question something. It is an absur
 
 Something doesn't look right. `1.1` lacks <b>TWO</b> extra dots. It looks like an IP address that is chopped into half. There is just no way `1.1` is a valid IP address
 
-However, i decided to just go ahead and try pinging it. Unsurprisingly, it resolves to `1.0.0.1`, the Cloudflare DNS server:
+However, I decided to just go ahead and try pinging it. Unsurprisingly, it resolves to `1.0.0.1`, the Cloudflare DNS server:
 
 ```bash
 [root@localhost ~]# ping -c1 1.1
@@ -42,7 +42,7 @@ Of course, as any good engineer would do, I embarked on a journey in search of e
 
 > It must be some kind of weird, non-standard IP format.
 
-Logically, i assume that the `ping` utility must have assumed that missing octets are merged. What if we tried to omit the dot notation altogether?
+Logically, I assume that the `ping` utility must have assumed that missing octets are merged. What if we tried to omit the dot notation altogether?
 
 Assuming that `1.0.0.1` is a typical 32-bit integer, the decimal equivalent would be `16,777,217`:
 
@@ -59,7 +59,7 @@ rtt min/avg/max/mdev = 1.065/1.065/1.065/0.000 ms
 Unsurprisingly, it worked. I tried several other formats, and the usual suspect worked: octal and hexadecimal:
 
 ```bash
-# for Octal, 0- prefix is used
+# for Octal, 0 prefix is used
 [root@localhost ~]# ping -c1 0100000001
 PING 0100000001 (1.0.0.1) 56(84) bytes of data.
 64 bytes from 1.0.0.1: icmp_seq=1 ttl=51 time=1.09 ms
