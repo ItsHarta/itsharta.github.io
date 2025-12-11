@@ -9,7 +9,7 @@
 
 ## 🚀 Project Overview
 
-A revised portofolio web built using Astro.js and TailwindCSS. Design by [David Cojocaru](https://github.com/cojocaru-david/cojocarudavid.me). Migrated to Astro.js 5, Vite 6 and TailwindCSS 4
+A revised portfolio web built using Astro.js and TailwindCSS. Original design by [David Cojocaru](https://github.com/cojocaru-david/cojocarudavid.me). Migrated to Astro.js 5, Vite 6 and TailwindCSS 4
 
 ## 🛠️ Technologies Used
 
