@@ -1,0 +1,133 @@
+---
+title: IP Address is Literally Just a Number
+description: An accidental encounter that made me question the concept of IP addresses.
+pubDate: 2025-12-11
+hero: ""
+heroAlt: ""
+tags: ["ip", "network", "computer", "technology"]
+---
+
+I always consider myself a very curious person, especially when it comes to technology. I will try just about anything that is remotely interesting. However, I have to admit that while I grew up witnessing insane technological advancements, I never really got the opportunity to play with low-level stuff. Things like assembly, machine codes, low-level networking, etc.
+
+## The Concept of IP Address (Specifically, IPv4)
+
+Every single IT and IT-adjacent person knew about IPv4: 4 octets of decimal numbers, separated by dots. I always knew that it is a 32-bit integer value, separated into 4 octets. I can probably guess it is somewhat related to how a byte is 8 bits, and just took it for granted for years.
+
+However, I came across a comment that made me question something. It is an absurdly simple statement, and goes something like:
+> Try pinging 1.1 from inside the box (VM).
+
+Something doesn't look right. `1.1` lacks <b>TWO</b> extra dots. It looks like an IP address that is chopped into half. There is just no way `1.1` is a valid IP address
+
+However, i decided to just go ahead and try pinging it. Unsurprisingly, it resolves to `1.0.0.1`, the Cloudflare DNS server:
+
+```bash
+[root@localhost ~]# ping -c1 1.1
+PING 1.1 (1.0.0.1) 56(84) bytes of data.
+64 bytes from 1.0.0.1: icmp_seq=1 ttl=51 time=1.12 ms
+
+--- 1.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 1.119/1.119/1.119/0.000 ms
+```
+
+This leads to my first question:
+
+> <b>But, how?</b>
+
+How does it assume and pad 2 zeroes in the middle segment?
+
+## In Search of Explanation
+
+Of course, as any good engineer would do, I embarked on a journey in search of explanations. My initial thought was:
+
+> It must be some kind of weird, non-standard IP format.
+
+Logically, i assume that the `ping` utility must have assumed that missing octets are merged. What if we tried to omit the dot notation altogether?
+
+Assuming that `1.0.0.1` is a typical 32-bit integer, the decimal equivalent would be `16,777,217`:
+
+```bash
+[root@localhost ~]# ping -c1 16777217
+PING 16777217 (1.0.0.1) 56(84) bytes of data.
+64 bytes from 1.0.0.1: icmp_seq=1 ttl=51 time=1.07 ms
+
+--- 16777217 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 1.065/1.065/1.065/0.000 ms
+```
+
+Unsurprisingly, it worked. I tried several other formats, and the usual suspect worked: octal and hexadecimal:
+
+```bash
+# for Octal, 0- prefix is used
+[root@localhost ~]# ping -c1 0100000001
+PING 0100000001 (1.0.0.1) 56(84) bytes of data.
+64 bytes from 1.0.0.1: icmp_seq=1 ttl=51 time=1.09 ms
+
+--- 0100000001 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 1.090/1.090/1.090/0.000 ms
+
+# For hex, 0x prefix
+[root@localhost ~]# ping -c1 0x1000001
+PING 0x1000001 (1.0.0.1) 56(84) bytes of data.
+64 bytes from 1.0.0.1: icmp_seq=1 ttl=51 time=1.07 ms
+
+--- 0x1000001 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 1.073/1.073/1.073/0.000 ms
+```
+
+We can even do some chaotic madness, such as mixed-dot notation. For example, we can do something like `0x8.010.1028` to ping google's `8.8.4.4`:
+- First Octet: 8 dec ->  0x8 hex
+- Second Octet: 8 dec -> 010 octal
+- Third + Fourth Octet combined: 4 * 256 + 4 = 1028 dec
+
+```bash
+[root@localhost ~]# ping -c1 0x8.010.1028
+PING 0x8.010.1028 (8.8.4.4) 56(84) bytes of data.
+64 bytes from 8.8.4.4: icmp_seq=1 ttl=112 time=0.882 ms
+
+--- 0x8.010.1028 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.882/0.882/0.882/0.000 ms
+```
+
+This experiment leads me to my second question:
+
+> <b>But why?</b>
+
+Who the hell in the 21st century needs to ping something in a hexadecimal or octal format? Or that chaotic mess of a mixed-dot notation?
+
+I scoured through the internet, asking every single LLM, dug to any kind of public documents. However, not even the great Wikipedia has information about this.
+There are several discussions here and there, but nothing meaningful.
+
+## It Is Not a Coincidence  
+
+My first assumption was that it must be some kind of legacy compatibility, considering the `ping` utility's age. However, it is actually more common than I thought:
+- It works on every single browser I tried
+- It works on every single OS I tried (Linux, Windows), across multiple versions
+- It works on every single programming language I tried
+
+Go ahead and try typing `https://0x8.010.1028` into your browser's address bar. Both Chrome and Firefox will happily resolve it to `https://dns.google/`
+
+Unsatisfied, I went ahead and dug even deeper.
+
+## The Revelation
+
+I found a bit of hint on [inet_addr's man page](https://linux.die.net/man/3/inet_addr). Utilities that parse IP addresses, such as `inet_addr()` and `inet_aton()` generally interpret the IP address in its binary form. This means that it does not care what is the input format, as long as the binary value stays the same. Under the hood, pretty much all modern OSes and network-facing tools use some kind of these implementations.
+
+After further digging, The RFC for Internet Protocol, [RFC 791](https://datatracker.ietf.org/doc/html/rfc791#section-2.3), writes this in `Section 2.3`, Subsection `Addressing`:
+
+> Addresses are fixed length of four octets (32 bits).  An address begins with a network number, followed by local address (called the "rest" field).  There are three formats or classes of internet addresses:  in class a, the high order bit is zero, the next 7 bits are the network, and the last 24 bits are the local address; in class b, the high order two bits are one-zero, the next 14 bits are the network and the last 16 bits are the local address; in class c, the high order three bits are one-one-zero, the next 21 bits are the network and the last 8 bits are the local address.
+
+After reading that, it clicked a bit for me. It doesn't specifically say that an IP address must use the 4-octet notation. Only how many bits are network and host segment in each class. Back then, when classful network architecture was still a thing, it made sense to have flexible ways to represent IP addresses. For example:
+
+1. <b>Class C network has a local address size of 8 bits, or exactly 1 octet.</b>  
+This aligns perfectly with modern day's `/24` subnet. Therefore, an address such as `192.168.1.1` is perfectly fine, since the host segment is perfectly represented by the last octet. You can instantly tell that `192.168.1.1` and `192.168.1.250` belongs to the same network.
+2. <b>Class B network has a local address size of 16 bits, or exactly 2 octets.</b>  
+With 4 octet dot-decimal notation, the last 2 octets are kinda useless, since they belong to the same network segment. For example, `172.16.16.1` and `172.16.20.1` will always belong to the same network. A notation of `172.16.4097` and `172.16.5121` made more sense. You can read it as "host no. 4097 and 5121 on `172.16.x` network"
+3. <b>Class A network has a local address size of 24 bits, or exactly 3 octets.</b>  
+In this case, the last 3 octets are host segment. A `1.1` IP of a Class A network can be read as "host no. 1 on `1.x` network".
+
+Somehow, as we shifted into classless and CIDR-based networking, this notation just somewhat stuck around. Knowing about this in 2025 probably will not help in anything, but the chase itself was a fun journey for me. After all, there is no such thing as useless knowledge.
