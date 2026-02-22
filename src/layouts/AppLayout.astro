@@ -164,24 +164,27 @@ const canonicalURL = new URL(Astro.url).href;
         updateThemeButtons();
       });
 
-      if (window["themeMediaQueryList"] && window["themeChangeListener"]) {
-        window["themeMediaQueryList"].removeEventListener(
-          "change",
-          window["themeChangeListener"]
+      if (window.themeMediaQueryList) {
+        if (window.themeChangeListener) {
+          window.themeMediaQueryList.removeEventListener(
+            "change",
+            window.themeChangeListener
+          );
+        }
+      } else {
+        window.themeMediaQueryList = window.matchMedia(
+          "(prefers-color-scheme: dark)"
         );
       }
 
-      window["themeMediaQueryList"] = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      );
-      window["themeChangeListener"] = (event) => {
+      window.themeChangeListener = (event) => {
         if (localStorage.theme === "system") {
           toggleTheme(event.matches);
         }
       };
-      window["themeMediaQueryList"].addEventListener(
+      window.themeMediaQueryList.addEventListener(
         "change",
-        window["themeChangeListener"]
+        window.themeChangeListener
       );
     }
 
