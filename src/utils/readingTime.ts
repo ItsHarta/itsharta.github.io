@@ -16,11 +16,15 @@ export function calculateReadingTime(text: string) {
     let clean = text.replace(/^---[\s\S]+?---/, '');
 
     // Remove lines that start with import or export
+    // The previous regex was /^(import|export)\s.*$/gm
+    // We update it to handle multiple lines (basic) or just be more specific
+    // For now, removing lines starting with import/export is safe enough for reading time
     clean = clean.replace(/^(import|export)\s.*$/gm, '');
 
     // Remove lines that look like HTML/JSX tags (e.g. <Component ...>)
-    // This is safer than a global <...> replacement which can be flagged as unsafe by CodeQL
-    clean = clean.replace(/^\s*<.*$/gm, '');
+    // We update this to avoid matching lines starting with "< 5"
+    // New regex: Start of line, optional whitespace, < followed by a letter (tag name) or / (closing tag)
+    clean = clean.replace(/^\s*<[a-zA-Z\/][^>]*>.*$/gm, '');
 
     return getReadingTime(clean.trim());
 }
