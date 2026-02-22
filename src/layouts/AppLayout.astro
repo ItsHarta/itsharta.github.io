@@ -19,6 +19,8 @@ interface Props {
   pubDate?: Date;
   tags?: string[];
   lastmod?: Date;
+  hideHeader?: boolean;
+  hideFooter?: boolean;
 }
 
 const {
@@ -26,6 +28,8 @@ const {
   description = defaultMeta.description,
   ogImage = defaultMeta.ogImage,
   tags = defaultMeta.keywords,
+  hideHeader = false,
+  hideFooter = false,
 } = Astro.props;
 
 const ogImageURL = new URL(ogImage.src, Astro.site).href;
@@ -87,28 +91,32 @@ const canonicalURL = new URL(Astro.url).href;
   <div style={{ background: "linear-gradient(45deg, rgba(96, 122, 250, 0) 20.79%, rgba(96, 122, 250, 0.09) 40.92%, rgba(255,255,255, 0) 70.35%)" }} class="fixed top-0 left-0 w-full h-full pointer-events-none -z-1">
 
   </div>
-    <nav
-      class="sticky grid grid-flow-row sm:grid-flow-col top-0 z-10 lg:backdrop-blur-lg bg-zinc-900 bg-opacity-90 lg:bg-opacity-50 py-4 px-6 lg:px-0"
-    >
-    <!-- empty element to pad the grid -->
-      <div class="w-31" />
-      <ul class="flex justify-center space-x-3 text-sm pt-2 sm:pt-1">
-        {
-          navigation.map((item) => (
-            <li>
-              <Link {...item} addClass="font-lg font-medium" />
+    {
+      !hideHeader && (
+        <nav class="sticky grid grid-flow-row sm:grid-flow-col top-0 z-10 lg:backdrop-blur-lg bg-zinc-900 bg-opacity-90 lg:bg-opacity-50 py-4 px-6 lg:px-0">
+          {/* empty element to pad the grid */}
+          <div class="w-31" />
+          <ul class="flex justify-center space-x-3 text-sm pt-2 sm:pt-1">
+            {navigation.map((item) => (
+              <li>
+                <Link {...item} addClass="font-lg font-medium" />
+              </li>
+            ))}
+            <li class="sm:hidden">
+              <Icon
+                name="mdi:theme-light-dark"
+                class="cursor-pointer text-xl text-zinc-300"
+                id="light-dark-selector"
+              />
             </li>
-          ))
-        }
-        <li class="sm:hidden">
-          <Icon name="mdi:theme-light-dark" class="cursor-pointer text-xl text-zinc-300" id="light-dark-selector" />
-        </li>
-      </ul>
-      <Theme id="theme-selector" addClass="hidden sm:flex pt-6 sm:pt-0" />
-    </nav>
+          </ul>
+          <Theme id="theme-selector" addClass="hidden sm:flex pt-6 sm:pt-0" />
+        </nav>
+      )
+    }
     <main class="px-6 lg:px-0 mx-auto max-w-3xl flex flex-col min-h-screen py-6" id="main-content">
       <slot />
-      <Footer />
+      {!hideFooter && <Footer />}
     </main>
   </body>
 </html>
