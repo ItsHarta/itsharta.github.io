@@ -37,7 +37,7 @@ export default [
 
       parserOptions: {
         project: true,
-        tsconfigRootDir: "E:\\Git\\itsharta.github.io",
+        tsconfigRootDir: __dirname,
       },
     },
   },
