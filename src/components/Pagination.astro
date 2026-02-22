@@ -1,16 +1,12 @@
 ---
-import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
-);
+interface Props {
+  prevPost?: CollectionEntry<"blog">;
+  nextPost?: CollectionEntry<"blog">;
+}
 
-const index = posts.findIndex((post) => {
-  return Astro.request.url.includes(post.id);
-});
-
-const nextPost = posts[index + 1];
-const prevPost = posts[index - 1];
+const { prevPost, nextPost } = Astro.props;
 ---
 
 <aside class="flex flex-col sm:flex-row mt-10 gap-4 w-full">

@@ -4,15 +4,26 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import { calculateReadingTime } from "@utils/readingTime";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({
+  const posts = (await getCollection("blog")).sort(
+    (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf(),
+  );
+  return posts.map((post, index) => ({
     params: { slug: post.id },
-    props: post,
+    props: {
+      post,
+      prevPost: index > 0 ? posts[index - 1] : undefined,
+      nextPost: index < posts.length - 1 ? posts[index + 1] : undefined,
+    },
   }));
 }
-type Props = CollectionEntry<"blog">;
 
-const post = Astro.props;
+type Props = {
+  post: CollectionEntry<"blog">;
+  prevPost?: CollectionEntry<"blog">;
+  nextPost?: CollectionEntry<"blog">;
+};
+
+const { post, prevPost, nextPost } = Astro.props;
 const frontmatter = post.data;
 const { Content } = await render(post);
 ---
@@ -27,6 +38,8 @@ const { Content } = await render(post);
   updatedDate={frontmatter.updatedDate}
   tags={frontmatter.tags}
   readingTime={calculateReadingTime(post.body ?? "").text}
+  prevPost={prevPost}
+  nextPost={nextPost}
 >
   <Content />
 </BlogLayout>

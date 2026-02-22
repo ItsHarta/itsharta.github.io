@@ -10,53 +10,62 @@ import { FlatCompat } from "@eslint/eslintrc";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
 });
 
-export default [{
+export default [
+  {
     ignores: ["**/.eslint.config.js", "**/tailwind.config.cjs"],
-}, ...compat.extends(
+  },
+  ...compat.extends(
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:astro/recommended",
-), {
+  ),
+  {
     plugins: {
-        "@typescript-eslint": typescriptEslint,
-        astro,
+      "@typescript-eslint": typescriptEslint,
+      astro,
     },
 
     languageOptions: {
-        parser: tsParser,
-        ecmaVersion: 5,
-        sourceType: "script",
+      parser: tsParser,
+      ecmaVersion: 5,
+      sourceType: "script",
 
-        parserOptions: {
-            project: true,
-            tsconfigRootDir: "E:\\Git\\itsharta.github.io",
-        },
+      parserOptions: {
+        project: true,
+        tsconfigRootDir: __dirname,
+      },
     },
-}, ...compat.extends("plugin:@typescript-eslint/strict").map(config => ({
+  },
+  ...compat.extends("plugin:@typescript-eslint/strict").map((config) => ({
     ...config,
     files: ["**/*.astro"],
-})), {
+  })),
+  {
     files: ["**/*.astro"],
 
     languageOptions: {
-        parser: parser,
-        ecmaVersion: 5,
-        sourceType: "script",
+      parser: parser,
+      ecmaVersion: 5,
+      sourceType: "script",
 
-        parserOptions: {
-            parser: "@typescript-eslint/parser",
-            extraFileExtensions: [".astro"],
-        },
+      parserOptions: {
+        parser: "@typescript-eslint/parser",
+        extraFileExtensions: [".astro"],
+      },
     },
-}, ...compat.extends(
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:@typescript-eslint/strict",
-).map(config => ({
-    ...config,
-    files: ["**/*.ts", "**/*.tsx"],
-}))];
+  },
+  ...compat
+    .extends(
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "plugin:@typescript-eslint/strict",
+    )
+    .map((config) => ({
+      ...config,
+      files: ["**/*.ts", "**/*.tsx"],
+    })),
+];

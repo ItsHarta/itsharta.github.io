@@ -17,14 +17,9 @@ const description = "Sorry, the page you are looking for does not exist.";
   {
     display: none;
   }
-
-  nav, footer, .footer {
-    display: none;
-    opacity: 0;
-  }
 </style>
 
-<AppLayout title={title} description={description}>
+<AppLayout title={title} description={description} hideHeader={true} hideFooter={true}>
   <div class="flex flex-col items-center justify-center h-screen text-center text-zinc-300">
 
     <h1 class="font-bold text-4xl mb-4 text-center">
