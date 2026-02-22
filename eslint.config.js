@@ -34,7 +34,7 @@ export default [{
 
         parserOptions: {
             project: true,
-            tsconfigRootDir: "E:\\Git\\itsharta.github.io",
+            tsconfigRootDir: __dirname,
         },
     },
 }, ...compat.extends("plugin:@typescript-eslint/strict").map(config => ({
