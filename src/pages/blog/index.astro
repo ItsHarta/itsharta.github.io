@@ -3,7 +3,7 @@ import AppLayout from "@layouts/AppLayout.astro";
 import BlogCard from "@components/BlogCard.astro";
 import Header from "@components/Header.astro";
 import { getCollection } from "astro:content";
-import { render } from "astro:content";
+import { calculateReadingTime } from "@utils/readingTime";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
@@ -23,14 +23,14 @@ const description =
   </p>
   <ul class="space-y-8">
     {
-      posts.map(async (post) => (
+      posts.map((post) => (
         <BlogCard
           title={post.data.title}
           pubDate={post.data.pubDate}
           description={post.data.description}
           url={`/blog/${post.id}/`}
           tags={post.data.tags}
-          readingTime={await render(post).then((res) => res.remarkPluginFrontmatter.minutesRead)}
+          readingTime={calculateReadingTime(post.body ?? "").text}
         />
       ))
     }
