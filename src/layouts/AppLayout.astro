@@ -19,6 +19,8 @@ interface Props {
   pubDate?: Date;
   tags?: string[];
   lastmod?: Date;
+  hideHeader?: boolean;
+  hideFooter?: boolean;
 }
 
 const {
@@ -26,6 +28,8 @@ const {
   description = defaultMeta.description,
   ogImage = defaultMeta.ogImage,
   tags = defaultMeta.keywords,
+  hideHeader = false,
+  hideFooter = false,
 } = Astro.props;
 
 const ogImageURL = new URL(ogImage.src, Astro.site).href;
@@ -87,28 +91,32 @@ const canonicalURL = new URL(Astro.url).href;
   <div style={{ background: "linear-gradient(45deg, rgba(96, 122, 250, 0) 20.79%, rgba(96, 122, 250, 0.09) 40.92%, rgba(255,255,255, 0) 70.35%)" }} class="fixed top-0 left-0 w-full h-full pointer-events-none -z-1">
 
   </div>
-    <nav
-      class="sticky grid grid-flow-row sm:grid-flow-col top-0 z-10 lg:backdrop-blur-lg bg-zinc-900 bg-opacity-90 lg:bg-opacity-50 py-4 px-6 lg:px-0"
-    >
-    <!-- empty element to pad the grid -->
-      <div class="w-31" />
-      <ul class="flex justify-center space-x-3 text-sm pt-2 sm:pt-1">
-        {
-          navigation.map((item) => (
-            <li>
-              <Link {...item} addClass="font-lg font-medium" />
+    {
+      !hideHeader && (
+        <nav class="sticky grid grid-flow-row sm:grid-flow-col top-0 z-10 lg:backdrop-blur-lg bg-zinc-900 bg-opacity-90 lg:bg-opacity-50 py-4 px-6 lg:px-0">
+          {/* empty element to pad the grid */}
+          <div class="w-31" />
+          <ul class="flex justify-center space-x-3 text-sm pt-2 sm:pt-1">
+            {navigation.map((item) => (
+              <li>
+                <Link {...item} addClass="font-lg font-medium" />
+              </li>
+            ))}
+            <li class="sm:hidden">
+              <Icon
+                name="mdi:theme-light-dark"
+                class="cursor-pointer text-xl text-zinc-300"
+                id="light-dark-selector"
+              />
             </li>
-          ))
-        }
-        <li class="sm:hidden">
-          <Icon name="mdi:theme-light-dark" class="cursor-pointer text-xl text-zinc-300" id="light-dark-selector" />
-        </li>
-      </ul>
-      <Theme id="theme-selector" addClass="hidden sm:flex pt-6 sm:pt-0" />
-    </nav>
+          </ul>
+          <Theme id="theme-selector" addClass="hidden sm:flex pt-6 sm:pt-0" />
+        </nav>
+      )
+    }
     <main class="px-6 lg:px-0 mx-auto max-w-3xl flex flex-col min-h-screen py-6" id="main-content">
       <slot />
-      <Footer />
+      {!hideFooter && <Footer />}
     </main>
   </body>
 </html>
@@ -126,43 +134,52 @@ const canonicalURL = new URL(Astro.url).href;
 
       const selector = document.getElementById("light-dark-selector");
       const container = document.getElementById("theme-selector");
-      selector?.addEventListener("click", () => {
-        const isHidden = container.classList.contains("hidden");
-        if (isHidden) {
-          container.classList.add("flex");
-          container.classList.remove("hidden");
-          selector.classList.add("text-blue-500", "dark:text-blue-400");
-          selector.classList.remove("text-zinc-300");
-        }else{
-          container.classList.add("hidden");
-          container.classList.remove("flex");
-          selector.classList.add("text-zinc-300");
-          selector.classList.remove("text-blue-500", "dark:text-blue-400");
-        }
-      });
+
+      if (selector && container) {
+        selector.addEventListener("click", () => {
+          const isHidden = container.classList.contains("hidden");
+          if (isHidden) {
+            container.classList.add("flex");
+            container.classList.remove("hidden");
+            selector.classList.add("text-blue-500", "dark:text-blue-400");
+            selector.classList.remove("text-zinc-300");
+          } else {
+            container.classList.add("hidden");
+            container.classList.remove("flex");
+            selector.classList.add("text-zinc-300");
+            selector.classList.remove("text-blue-500", "dark:text-blue-400");
+          }
+        });
+      }
       
       const lightThemeButton = document.getElementById("light-theme-button");
-      lightThemeButton.addEventListener("click", () => {
-        localStorage.setItem("theme", "light");
-        toggleTheme(false);
-        updateThemeButtons();
-        document.documentElement.setAttribute("data-theme", "catppuccin-latte");
-      });
+      if (lightThemeButton) {
+        lightThemeButton.addEventListener("click", () => {
+          localStorage.setItem("theme", "light");
+          toggleTheme(false);
+          updateThemeButtons();
+          document.documentElement.setAttribute("data-theme", "catppuccin-latte");
+        });
+      }
       
       const darkThemeButton = document.getElementById("dark-theme-button");
-      darkThemeButton?.addEventListener("click", () => {
-        localStorage.setItem("theme", "dark");
-        toggleTheme(true);
-        updateThemeButtons();
-        document.documentElement.setAttribute("data-theme", "catppuccin-macchiato");
-      });
+      if (darkThemeButton) {
+        darkThemeButton.addEventListener("click", () => {
+          localStorage.setItem("theme", "dark");
+          toggleTheme(true);
+          updateThemeButtons();
+          document.documentElement.setAttribute("data-theme", "catppuccin-macchiato");
+        });
+      }
 
       const systemThemeButton = document.getElementById("system-theme-button");
-      systemThemeButton?.addEventListener("click", () => {
-        localStorage.setItem("theme", "system");
-        toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
-        updateThemeButtons();
-      });
+      if (systemThemeButton) {
+        systemThemeButton.addEventListener("click", () => {
+          localStorage.setItem("theme", "system");
+          toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+          updateThemeButtons();
+        });
+      }
 
       window
         .matchMedia("(prefers-color-scheme: dark)")
