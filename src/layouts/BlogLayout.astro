@@ -12,17 +12,17 @@ interface Props {
   image?: ImageMetadata;
   imageAlt?: string;
   pubDate: Date;
-  url: string;
+  postId: string;
   updatedDate: Date | undefined;
   tags: string[];
   readingTime: string;
 }
 
-const { title, description, image, imageAlt, pubDate, url, updatedDate, tags, readingTime } =
+const { title, description, image, imageAlt, pubDate, postId, updatedDate, tags, readingTime } =
   Astro.props;
 
 const ogImage = {
-  src: `/image/${url}.png`,
+  src: `/image/${postId}.png`,
   alt: title,
 };
 
@@ -101,5 +101,5 @@ const fullPubDate = pubDate.toLocaleDateString("en", {
   >
     <slot />
   </article>
-  <Pagination />
+  <Pagination currentPostId={postId} />
 </AppLayout>
