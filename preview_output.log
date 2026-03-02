@@ -1,0 +1,9 @@
+
+> itsharta.github.io@2.0.0 preview /app
+> astro preview --port 4321
+
+
+ astro  v5.18.0 ready in 20 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
