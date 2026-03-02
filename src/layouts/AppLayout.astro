@@ -85,6 +85,12 @@ const canonicalURL = new URL(Astro.url).href;
   <body
     class="dark:bg-zinc-900 bg-zinc-100 antialiased selection:bg-blue-300 selection:text-zinc-900 dark:selection:bg-blue-600 dark:selection:text-white 2xl:text-lg"
     >
+  <a
+    href="#main-content"
+    class="sr-only focus:not-sr-only focus:fixed focus:top-6 focus:left-6 focus:z-50 focus:px-4 focus:py-2 focus:bg-zinc-50 dark:focus:bg-zinc-800 focus:text-blue-600 dark:focus:text-blue-400 focus:ring-2 focus:ring-blue-500 focus:rounded-md focus:shadow-lg focus:font-medium transition-colors"
+  >
+    Skip to content
+  </a>
   <div class="hidden z-20 w-screen bg-zinc-900 h-1.5 top-0" id="loader-container">
     <div class="bg-blue-600 h-1.5 dark:bg-blue-500" style="width: 10%" id="loader-bar"></div>
   </div>

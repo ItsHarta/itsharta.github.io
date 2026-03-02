@@ -55,7 +55,8 @@ export async function GET(context: APIContext) {
     </div>
   `;
 
-  const svg = await satori(markup, {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  const svg = await satori(markup as any, {
     fonts: [
       {
         name: "Inter",
@@ -79,7 +80,7 @@ export async function GET(context: APIContext) {
     },
   }).render();
 
-  return new Response(image.asPng(), {
+  return new Response(image.asPng() as unknown as BodyInit, {
     headers: {
       "Content-Type": "image/png",
       "Cache-Control": "public, max-age=31536000, immutable",

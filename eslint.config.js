@@ -1,5 +1,4 @@
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import astro from "eslint-plugin-astro";
 import tsParser from "@typescript-eslint/parser";
 import parser from "astro-eslint-parser";
 import path from "node:path";
@@ -17,7 +16,7 @@ const compat = new FlatCompat({
 
 export default [
   {
-    ignores: ["**/.eslint.config.js", "**/tailwind.config.cjs"],
+    ignores: ["**/.eslint.config.js", "**/tailwind.config.cjs", "scripts/validate-data.mjs", "remark-reading-time.mjs", ".eslintrc.cjs", "src/pages/image/[slug].png.ts"],
   },
   ...compat.extends(
     "eslint:recommended",
@@ -27,7 +26,16 @@ export default [
   {
     plugins: {
       "@typescript-eslint": typescriptEslint,
-      astro,
+    },
+
+    rules: {
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^Props$"
+        }
+      ]
     },
 
     languageOptions: {
