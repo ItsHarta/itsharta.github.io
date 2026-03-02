@@ -55,7 +55,7 @@ export async function GET(context: APIContext) {
     </div>
   `;
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
   const svg = await satori(markup as any, {
     fonts: [
       {
