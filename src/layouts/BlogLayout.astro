@@ -21,8 +21,19 @@ interface Props {
   nextPost?: CollectionEntry<"blog">;
 }
 
-const { title, description, image, imageAlt, pubDate, url, updatedDate, tags, readingTime, prevPost, nextPost } =
-  Astro.props;
+const {
+  title,
+  description,
+  image,
+  imageAlt,
+  pubDate,
+  url,
+  updatedDate,
+  tags,
+  readingTime,
+  prevPost,
+  nextPost,
+} = Astro.props;
 
 const ogImage = {
   src: `/image/${url}.png`,
@@ -53,7 +64,9 @@ const fullPubDate = pubDate.toLocaleDateString("en", {
     >
       {title}
     </h1>
-    <div class="inline-flex items-center mb-8 justify-between align-middle flex-wrap gap-2">
+    <div
+      class="inline-flex items-center mb-8 justify-between align-middle flex-wrap gap-2"
+    >
       <div>
         <time
           datetime={pubDate.toISOString()}
@@ -61,43 +74,43 @@ const fullPubDate = pubDate.toLocaleDateString("en", {
         >
           {fullPubDate}
         </time>
-        <p class="dark:text-zinc-400 text-zinc-700 text-md">{ readingTime }</p>
+        <p class="dark:text-zinc-400 text-zinc-700 text-md">{readingTime}</p>
       </div>
-    <div class="flex items-center gap-4">
-      <div class="aspect-square rounded-full overflow-hidden">
-        <Image
-          src={authorImage}
-          alt="Author"
-          loading="eager"
-          class="aspect-square w-10"
-          width={80}
-          height={80}
-        />
+      <div class="flex items-center gap-4">
+        <div class="aspect-square rounded-full overflow-hidden">
+          <Image
+            src={authorImage}
+            alt="Author"
+            loading="eager"
+            class="aspect-square w-10"
+            width={80}
+            height={80}
+          />
+        </div>
+        <p class="dark:text-zinc-400 text-zinc-700 text-sm">
+          <span class="block font-semibold">{author}</span>
+          <a
+            class="dark:text-blue-400 text-blue-600 hover:underline block"
+            href="https://github.com/itsHarta"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{tag}
+          </a>
+        </p>
       </div>
-      <p class="dark:text-zinc-400 text-zinc-700 text-sm">
-        <span class="block font-semibold">{author}</span>
-        <a
-          class="dark:text-blue-400 text-blue-600 hover:underline block"
-          href="https://github.com/itsHarta"
-          target="_blank"
-          rel="noopener noreferrer"
-          >{tag}
-        </a>
-      </p>
-    </div>
     </div>
     {
-      (image && imageAlt)
-      && <Image
-        src={image}
-        alt={imageAlt}
-        loading="eager"
-        class="rounded-lg"
-        width={1200}
-        height={630}
-      />
+      image && imageAlt && (
+        <Image
+          src={image}
+          alt={imageAlt}
+          loading="eager"
+          class="rounded-lg"
+          width={1200}
+          height={630}
+        />
+      )
     }
-
   </header>
   <article
     class="prose prose-code:before:hidden prose-code:after:hidden dark:prose-invert lg:prose-lg dark:prose-code:text-zinc-300 dark:prose-a:text-blue-400 prose-a:text-blue-600 max-w-none hover:prose-a:underline focus:prose-a:underline prose-a:no-underline dark:prose-headings:text-teal-500 prose-img:rounded-lg"

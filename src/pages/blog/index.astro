@@ -6,7 +6,8 @@ import { getCollection } from "astro:content";
 import { render } from "astro:content";
 
 const posts = (await getCollection("blog")).sort(
-  (a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime(),
 );
 
 const title = "Harta Angkasa - Blog";
@@ -30,7 +31,9 @@ const description =
           description={post.data.description}
           url={`/blog/${post.id}/`}
           tags={post.data.tags}
-          readingTime={await render(post).then((res) => res.remarkPluginFrontmatter.minutesRead)}
+          readingTime={await render(post).then(
+            (res) => res.remarkPluginFrontmatter.minutesRead,
+          )}
         />
       ))
     }
