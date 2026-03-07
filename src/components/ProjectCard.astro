@@ -22,7 +22,7 @@ const rolelist = role.includes("|") ? role.split("|") : [role];
 ---
 
 <li
-  class="dark:text-zinc-400 text-zinc-500 gap-1 p-6 border border-zinc-300 dark:border-zinc-700/60 rounded-lg flex flex-col bg-opacity-40 dark:bg-opacity-40 bg-zinc-50 dark:bg-zinc-800"
+  class="dark:text-zinc-400 text-zinc-500 gap-1 p-6 border border-zinc-300 dark:border-zinc-700/60 rounded-lg flex flex-col bg-opacity-40 dark:bg-opacity-40 bg-zinc-50 dark:bg-zinc-800 hover:border-blue-300 dark:hover:border-blue-400 hover:bg-blue-100 dark:hover:bg-blue-600/20 transition-all duration-300 ease-in-out"
 >
   <div class="flex justify-between">
     <div class="flex flex-col sm:flex-row sm:items-baseline gap-2">
@@ -31,26 +31,32 @@ const rolelist = role.includes("|") ? role.split("|") : [role];
       >
         {name}
       </h2>
-      {rolelist.map((role) => (
-        <Badge text={role} color={colors[role as keyof typeof colors]} />
-      ))}
+      {
+        rolelist.map((role) => (
+          <Badge text={role} color={colors[role as keyof typeof colors]} />
+        ))
+      }
     </div>
     <div class="flex gap-2 mb-3">
-      <span class="text-md font-light dark:text-white text-zinc-700 [word-break:break-word] text-right">{client}</span>
+      <span
+        class="text-md font-light dark:text-white text-zinc-700 [word-break:break-word] text-right"
+        >{client}</span
+      >
     </div>
-    
   </div>
-  {website && (
-    <div class="flex-gap-2 items-center mb-2">
-      <a href={website} class="rounded-md pl-3 pr-1 py-1 text-zinc-600 dark:text-zinc-300 hover:text-zinc-700 dark:hover:text-zinc-300/70 bg-zinc-200/50 dark:bg-zinc-700/80 hover:bg-zinc-300/80 dark:hover:bg-zinc-700/15 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-400/60 dark:hover:border-zinc-600">
-        Visit Project
-        <Icon 
-          name="mdi:open-in-new"
-          class="inline w-6 pb-1 fill-current"
-        />
-      </a>
-    </div>
-  )}
+  {
+    website && (
+      <div class="flex-gap-2 items-center mb-2">
+        <a
+          href={website}
+          class="rounded-md pl-3 pr-1 py-1 text-zinc-600 dark:text-zinc-300 hover:text-zinc-700 dark:hover:text-zinc-300/70 bg-zinc-200/50 dark:bg-zinc-700/80 hover:bg-zinc-300/80 dark:hover:bg-zinc-700/15 border border-zinc-300 dark:border-zinc-700 hover:border-zinc-400/60 dark:hover:border-zinc-600"
+        >
+          Visit Project
+          <Icon name="mdi:open-in-new" class="inline w-6 pb-1 fill-current" />
+        </a>
+      </div>
+    )
+  }
   {description && <p class="leading-relaxed">{description}</p>}
   <ul class="flex flex-wrap gap-2 mt-2">
     {

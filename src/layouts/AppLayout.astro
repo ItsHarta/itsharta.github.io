@@ -4,7 +4,7 @@ import { author, defaultMeta } from "@data/socials";
 import navigation from "@data/navigation.json";
 import "@fontsource-variable/inter";
 import Theme from "@components/Theme.astro";
-import Footer from "@components/Footer.astro";  
+import Footer from "@components/Footer.astro";
 import "@styles/global.css";
 import { Icon } from "astro-icon/components";
 import { ClientRouter } from "astro:transitions";
@@ -37,8 +37,9 @@ const canonicalURL = new URL(Astro.url).href;
 ---
 
 <!doctype html>
-<html lang="en"
-      class="overflow-x-hidden break-words text-zinc-900 dark:text-zinc-100 dark"
+<html
+  lang="en"
+  class="overflow-x-hidden break-words text-zinc-900 dark:text-zinc-100 dark"
 >
   <head>
     <ClientRouter />
@@ -57,46 +58,82 @@ const canonicalURL = new URL(Astro.url).href;
     <meta property="og:image:alt" content={ogImage.alt} />
     <meta property="og:locale" content="en_US" />
     <meta name="theme-color" content="#60A5FA" />
-    <meta name="msapplication-TileColor" content="#60A5FA">
+    <meta name="msapplication-TileColor" content="#60A5FA" />
     <meta name="color-scheme" content="light dark" />
     <meta name="apple-mobile-web-app-title" content={title} />
     <meta name="application-name" content={title} />
     <meta name="generator" content={Astro.generator} />
     <meta name="robots" content="follow, index" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/android-icon-192x192.png"
+    />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    {
-      tags && tags.map((tag) => ( <meta property="article:tag" content={tag} /> ))
-    }
+    {tags && tags.map((tag) => <meta property="article:tag" content={tag} />)}
   </head>
   <body
     class="dark:bg-zinc-900 bg-zinc-100 antialiased selection:bg-blue-300 selection:text-zinc-900 dark:selection:bg-blue-600 dark:selection:text-white 2xl:text-lg"
-    >
-  <a
-    href="#main-content"
-    class="sr-only focus:not-sr-only focus:fixed focus:top-6 focus:left-6 focus:z-50 focus:px-4 focus:py-2 focus:bg-zinc-50 dark:focus:bg-zinc-800 focus:text-blue-600 dark:focus:text-blue-400 focus:ring-2 focus:ring-blue-500 focus:rounded-md focus:shadow-lg focus:font-medium transition-colors"
   >
-    Skip to content
-  </a>
-  <div class="hidden z-20 w-screen bg-zinc-900 h-1.5 top-0" id="loader-container">
-    <div class="bg-blue-600 h-1.5 dark:bg-blue-500" style="width: 10%" id="loader-bar"></div>
-  </div>
-  <div style={{ background: "linear-gradient(45deg, rgba(96, 122, 250, 0) 20.79%, rgba(96, 122, 250, 0.09) 40.92%, rgba(255,255,255, 0) 70.35%)" }} class="fixed top-0 left-0 w-full h-full pointer-events-none -z-1">
-
-  </div>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-6 focus:left-6 focus:z-50 focus:px-4 focus:py-2 focus:bg-zinc-50 dark:focus:bg-zinc-800 focus:text-blue-600 dark:focus:text-blue-400 focus:ring-2 focus:ring-blue-500 focus:rounded-md focus:shadow-lg focus:font-medium transition-colors"
+    >
+      Skip to content
+    </a>
+    <div
+      class="hidden z-20 w-screen bg-zinc-900 h-1.5 top-0"
+      id="loader-container"
+    >
+      <div
+        class="bg-blue-600 h-1.5 dark:bg-blue-500"
+        style="width: 10%"
+        id="loader-bar"
+      >
+      </div>
+    </div>
+    <div
+      style={{
+        background:
+          "linear-gradient(45deg, rgba(96, 122, 250, 0) 20.79%, rgba(96, 122, 250, 0.09) 40.92%, rgba(255,255,255, 0) 70.35%)",
+      }}
+      class="fixed top-0 left-0 w-full h-full pointer-events-none -z-1"
+    >
+    </div>
     {
       !hideHeader && (
         <nav class="sticky grid grid-flow-row sm:grid-flow-col top-0 z-10 lg:backdrop-blur-lg bg-zinc-900 bg-opacity-90 lg:bg-opacity-50 py-4 px-6 lg:px-0">
@@ -120,175 +157,182 @@ const canonicalURL = new URL(Astro.url).href;
         </nav>
       )
     }
-    <main class="px-6 lg:px-0 mx-auto max-w-3xl flex flex-col min-h-screen py-6" id="main-content">
+    <main
+      class="px-6 lg:px-0 mx-auto max-w-3xl flex flex-col min-h-screen py-6"
+      id="main-content"
+    >
       <slot />
       {!hideFooter && <Footer />}
     </main>
   </body>
 </html>
-  <script is:inline>
-    function init() {
-      preloadTheme();
-      animate();
-      updateThemeButtons();
+<script is:inline>
+  function init() {
+    preloadTheme();
+    animate();
+    updateThemeButtons();
 
-      const currentYear = new Date().getFullYear();
-      const yearElement = document.getElementById('year');
-      if (yearElement) {
-          yearElement.innerText = currentYear.toString();
-      }
-
-      const selector = document.getElementById("light-dark-selector");
-      const container = document.getElementById("theme-selector");
-
-      if (selector && container) {
-        selector.addEventListener("click", () => {
-          const isHidden = container.classList.contains("hidden");
-          if (isHidden) {
-            container.classList.add("flex");
-            container.classList.remove("hidden");
-            selector.classList.add("text-blue-500", "dark:text-blue-400");
-            selector.classList.remove("text-zinc-300");
-          } else {
-            container.classList.add("hidden");
-            container.classList.remove("flex");
-            selector.classList.add("text-zinc-300");
-            selector.classList.remove("text-blue-500", "dark:text-blue-400");
-          }
-        });
-      }
-      
-      const lightThemeButton = document.getElementById("light-theme-button");
-      if (lightThemeButton) {
-        lightThemeButton.addEventListener("click", () => {
-          localStorage.setItem("theme", "light");
-          toggleTheme(false);
-          updateThemeButtons();
-          document.documentElement.setAttribute("data-theme", "catppuccin-latte");
-        });
-      }
-      
-      const darkThemeButton = document.getElementById("dark-theme-button");
-      if (darkThemeButton) {
-        darkThemeButton.addEventListener("click", () => {
-          localStorage.setItem("theme", "dark");
-          toggleTheme(true);
-          updateThemeButtons();
-          document.documentElement.setAttribute("data-theme", "catppuccin-macchiato");
-        });
-      }
-
-      const systemThemeButton = document.getElementById("system-theme-button");
-      if (systemThemeButton) {
-        systemThemeButton.addEventListener("click", () => {
-          localStorage.setItem("theme", "system");
-          toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
-          updateThemeButtons();
-        });
-      }
-
-      if (window.themeMediaQueryList) {
-        if (window.themeChangeListener) {
-          window.themeMediaQueryList.removeEventListener(
-            "change",
-            window.themeChangeListener
-          );
-        }
-      } else {
-        window.themeMediaQueryList = window.matchMedia(
-          "(prefers-color-scheme: dark)"
-        );
-      }
-
-      window.themeChangeListener = (event) => {
-        if (localStorage.theme === "system") {
-          toggleTheme(event.matches);
-        }
-      };
-      window.themeMediaQueryList.addEventListener(
-        "change",
-        window.themeChangeListener
-      );
+    const currentYear = new Date().getFullYear();
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+      yearElement.innerText = currentYear.toString();
     }
 
-    function updateThemeButtons() {
-      const theme = localStorage.getItem("theme");
-      const lightThemeButton = document.getElementById("light-theme-button");
-      const darkThemeButton = document.getElementById("dark-theme-button");
-      const systemThemeButton = document.getElementById("system-theme-button");
+    const selector = document.getElementById("light-dark-selector");
+    const container = document.getElementById("theme-selector");
 
-      function removeActiveButtonTheme(button) {
-        button?.classList.remove("bg-zinc-300/10", "border-blue-500");
-        button?.classList.add("border-zinc-300/20");
-        button?.querySelectorAll("svg").forEach((svg) => {
-          svg.classList.remove(
-            "stroke-blue-500", 
-            "dark:stroke-blue-400", 
-            "group-hover:stroke-blue-500", 
-            "dark:group-hover:stroke-blue-400", 
-            "group-focus-visible:stroke-blue-500", 
-            "dark:group-focus-visible:stroke-blue-400"
-          );
-          svg.classList.add(
-            "stroke-zinc-300", 
-            "group-hover:stroke-zinc-300", 
-            "group-focus-visible:stroke-zinc-300");
-        });
-      }
-
-      function addActiveButtonTheme(button) {
-        button?.classList.add("bg-zinc-300/10", "border-blue-500");
-        button?.classList.remove("border-zinc-300/20");
-        button?.querySelectorAll("svg").forEach((svg) => {
-          svg.classList.add(
-            "stroke-blue-500", 
-            "dark:stroke-blue-400",
-            "group-hover:stroke-blue-500", 
-            "dark:group-hover:stroke-blue-400",
-            "group-focus-visible:stroke-blue-500", 
-            "dark:group-focus-visible:stroke-blue-400"
-          );
-          svg.classList.remove(
-            "stroke-zinc-300",
-            "group-hover:stroke-zinc-300",
-            "group-focus-visible:stroke-zinc-300"
-          );
-        });
-      }
-
-      removeActiveButtonTheme(lightThemeButton);
-      removeActiveButtonTheme(darkThemeButton);
-      removeActiveButtonTheme(systemThemeButton);
-
-      switch(theme){
-        case "light":
-          addActiveButtonTheme(lightThemeButton);
-          break;
-        case "dark":
-          addActiveButtonTheme(darkThemeButton);
-          break;
-        default:
-          addActiveButtonTheme(systemThemeButton);
-          break;
-      }
-    }
-
-    function animate() {
-      const animateElements = document.querySelectorAll(".animate");
-
-      animateElements.forEach((element, index) => {
-        setTimeout(() => {
-          element.classList.add("show");
-        }, index * 100);
+    if (selector && container) {
+      selector.addEventListener("click", () => {
+        const isHidden = container.classList.contains("hidden");
+        if (isHidden) {
+          container.classList.add("flex");
+          container.classList.remove("hidden");
+          selector.classList.add("text-blue-500", "dark:text-blue-400");
+          selector.classList.remove("text-zinc-300");
+        } else {
+          container.classList.add("hidden");
+          container.classList.remove("flex");
+          selector.classList.add("text-zinc-300");
+          selector.classList.remove("text-blue-500", "dark:text-blue-400");
+        }
       });
     }
 
-    function toggleTheme(dark) {
-      const css = document.createElement("style");
+    const lightThemeButton = document.getElementById("light-theme-button");
+    if (lightThemeButton) {
+      lightThemeButton.addEventListener("click", () => {
+        localStorage.setItem("theme", "light");
+        toggleTheme(false);
+        updateThemeButtons();
+        document.documentElement.setAttribute("data-theme", "catppuccin-latte");
+      });
+    }
 
-      css.appendChild(
-        document.createTextNode(
-          `* {
+    const darkThemeButton = document.getElementById("dark-theme-button");
+    if (darkThemeButton) {
+      darkThemeButton.addEventListener("click", () => {
+        localStorage.setItem("theme", "dark");
+        toggleTheme(true);
+        updateThemeButtons();
+        document.documentElement.setAttribute(
+          "data-theme",
+          "catppuccin-macchiato",
+        );
+      });
+    }
+
+    const systemThemeButton = document.getElementById("system-theme-button");
+    if (systemThemeButton) {
+      systemThemeButton.addEventListener("click", () => {
+        localStorage.setItem("theme", "system");
+        toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+        updateThemeButtons();
+      });
+    }
+
+    if (window.themeMediaQueryList) {
+      if (window.themeChangeListener) {
+        window.themeMediaQueryList.removeEventListener(
+          "change",
+          window.themeChangeListener,
+        );
+      }
+    } else {
+      window.themeMediaQueryList = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      );
+    }
+
+    window.themeChangeListener = (event) => {
+      if (localStorage.theme === "system") {
+        toggleTheme(event.matches);
+      }
+    };
+    window.themeMediaQueryList.addEventListener(
+      "change",
+      window.themeChangeListener,
+    );
+  }
+
+  function updateThemeButtons() {
+    const theme = localStorage.getItem("theme");
+    const lightThemeButton = document.getElementById("light-theme-button");
+    const darkThemeButton = document.getElementById("dark-theme-button");
+    const systemThemeButton = document.getElementById("system-theme-button");
+
+    function removeActiveButtonTheme(button) {
+      button?.classList.remove("bg-zinc-300/10", "border-blue-500");
+      button?.classList.add("border-zinc-300/20");
+      button?.querySelectorAll("svg").forEach((svg) => {
+        svg.classList.remove(
+          "stroke-blue-500",
+          "dark:stroke-blue-400",
+          "group-hover:stroke-blue-500",
+          "dark:group-hover:stroke-blue-400",
+          "group-focus-visible:stroke-blue-500",
+          "dark:group-focus-visible:stroke-blue-400",
+        );
+        svg.classList.add(
+          "stroke-zinc-300",
+          "group-hover:stroke-zinc-300",
+          "group-focus-visible:stroke-zinc-300",
+        );
+      });
+    }
+
+    function addActiveButtonTheme(button) {
+      button?.classList.add("bg-zinc-300/10", "border-blue-500");
+      button?.classList.remove("border-zinc-300/20");
+      button?.querySelectorAll("svg").forEach((svg) => {
+        svg.classList.add(
+          "stroke-blue-500",
+          "dark:stroke-blue-400",
+          "group-hover:stroke-blue-500",
+          "dark:group-hover:stroke-blue-400",
+          "group-focus-visible:stroke-blue-500",
+          "dark:group-focus-visible:stroke-blue-400",
+        );
+        svg.classList.remove(
+          "stroke-zinc-300",
+          "group-hover:stroke-zinc-300",
+          "group-focus-visible:stroke-zinc-300",
+        );
+      });
+    }
+
+    removeActiveButtonTheme(lightThemeButton);
+    removeActiveButtonTheme(darkThemeButton);
+    removeActiveButtonTheme(systemThemeButton);
+
+    switch (theme) {
+      case "light":
+        addActiveButtonTheme(lightThemeButton);
+        break;
+      case "dark":
+        addActiveButtonTheme(darkThemeButton);
+        break;
+      default:
+        addActiveButtonTheme(systemThemeButton);
+        break;
+    }
+  }
+
+  function animate() {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
+      setTimeout(() => {
+        element.classList.add("show");
+      }, index * 100);
+    });
+  }
+
+  function toggleTheme(dark) {
+    const css = document.createElement("style");
+
+    css.appendChild(
+      document.createTextNode(
+        `* {
               -webkit-transition: none !important;
               -moz-transition: none !important;
               -o-transition: none !important;
@@ -296,44 +340,47 @@ const canonicalURL = new URL(Astro.url).href;
               transition: none !important;
             }
           `,
-        ),
+      ),
+    );
+
+    document.head.appendChild(css);
+
+    if (dark) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.setAttribute(
+        "data-theme",
+        "catppuccin-macchiato",
       );
-
-      document.head.appendChild(css);
-
-      if (dark) {
-        document.documentElement.classList.add("dark");
-        document.documentElement.setAttribute("data-theme", "catppuccin-macchiato");
-      } else {
-        document.documentElement.classList.remove("dark");
-        document.documentElement.setAttribute("data-theme", "catppuccin-latte");
-      }
-
-      // window.getComputedStyle(css).opacity;
-      document.head.removeChild(css);
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.setAttribute("data-theme", "catppuccin-latte");
     }
 
-    function preloadTheme() {
-      const userTheme = localStorage.theme;
+    // window.getComputedStyle(css).opacity;
+    document.head.removeChild(css);
+  }
 
-      if (userTheme === "light" || userTheme === "dark") {
-        toggleTheme(userTheme === "dark");
-      } else {
-        toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
-      }
+  function preloadTheme() {
+    const userTheme = localStorage.theme;
+
+    if (userTheme === "light" || userTheme === "dark") {
+      toggleTheme(userTheme === "dark");
+    } else {
+      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
     }
+  }
 
-    document.addEventListener("DOMContentLoaded", () => init());
-    document.addEventListener("astro:after-swap", () => init());
-    document.addEventListener('astro:before-preparation', event => {
+  document.addEventListener("DOMContentLoaded", () => init());
+  document.addEventListener("astro:after-swap", () => init());
+  document.addEventListener("astro:before-preparation", (event) => {
     const originalLoader = event.loader;
-    event.loader = async function() {
+    event.loader = async function () {
       const container = document.getElementById("loader-container");
       const bar = document.getElementById("loader-bar");
       container.classList.remove("hidden");
       container.classList.add("absolute");
       const intv = setInterval(() => {
-        if(parseInt(bar.style.width) >= 90) {
+        if (parseInt(bar.style.width) >= 90) {
           clearInterval(intv);
           return;
         }
@@ -344,5 +391,5 @@ const canonicalURL = new URL(Astro.url).href;
       stop();
     };
   });
-    preloadTheme();
-  </script>
+  preloadTheme();
+</script>

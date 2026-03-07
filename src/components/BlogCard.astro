@@ -15,11 +15,10 @@ const fullDate = pubDate.toLocaleDateString("en", {
   month: "long",
   day: "numeric",
 });
-
 ---
 
 <li
-  class="dark:text-zinc-400 text-zinc-500 gap-1 p-6 border border-zinc-300/60 dark:border-zinc-700/60 rounded-lg flex flex-col bg-opacity-40 dark:bg-opacity-40 bg-zinc-50 dark:bg-zinc-800"
+  class="dark:text-zinc-400 text-zinc-500 gap-1 p-6 border border-zinc-300/60 dark:border-zinc-700/60 rounded-lg flex flex-col bg-opacity-40 dark:bg-opacity-40 bg-zinc-50 dark:bg-zinc-800 hover:border-blue-300 dark:hover:border-blue-400 hover:bg-blue-100 dark:hover:bg-blue-600/20 transition-all duration-300 ease-in-out"
 >
   <a class="flex flex-col gap-2" href={url} data-astro-reload>
     <div class="flex justify-between">
@@ -33,10 +32,9 @@ const fullDate = pubDate.toLocaleDateString("en", {
       </div>
       <time
         datetime={pubDate.toISOString()}
-      class="block text-sm tracking-wide dark:text-zinc-400 text-zinc-600 ml-4"
-      >{fullDate}
-    </time>
-
+        class="block text-sm tracking-wide dark:text-zinc-400 text-zinc-600 ml-4"
+        >{fullDate}
+      </time>
     </div>
     <p class="text-sm dark:text-zinc-400 text-zinc-600 mt-2">
       {description}
@@ -46,13 +44,14 @@ const fullDate = pubDate.toLocaleDateString("en", {
         Tags:
       </p>
       <ul class="flex flex-wrap gap-2">
-        {tags.map((tag) => (
-          <li class="dark:bg-zinc-700 bg-zinc-200 text-zinc-600 dark:text-zinc-300 rounded-md px-2 py-1 text-sm">
-            {tag}
-          </li>
-        ))}
+        {
+          tags.map((tag) => (
+            <li class="dark:bg-zinc-700 bg-zinc-200 text-zinc-600 dark:text-zinc-300 rounded-md px-2 py-1 text-sm">
+              {tag}
+            </li>
+          ))
+        }
       </ul>
     </div>
   </a>
 </li>
-

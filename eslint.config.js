@@ -11,7 +11,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export default [
   {
-    ignores: ["**/.eslint.config.js", "**/tailwind.config.cjs", "dist/**", ".astro/**", "remark-reading-time.mjs", "scripts/validate-data.mjs", ".eslintrc.cjs", "eslint.config.js"],
+    ignores: [
+      "**/.eslint.config.js",
+      "**/tailwind.config.cjs",
+      "dist/**",
+      ".astro/**",
+      "remark-reading-time.mjs",
+      "scripts/validate-data.mjs",
+      ".eslintrc.cjs",
+      "eslint.config.js",
+    ],
   },
   {
     plugins: {
@@ -43,5 +52,5 @@ export default [
         extraFileExtensions: [".astro"],
       },
     },
-  }
+  },
 ];
