@@ -146,11 +146,19 @@ const canonicalURL = new URL(Astro.url).href;
               </li>
             ))}
             <li class="sm:hidden">
-              <Icon
-                name="mdi:theme-light-dark"
-                class="cursor-pointer text-xl text-zinc-300"
+              <button
                 id="light-dark-selector"
-              />
+                aria-label="Toggle theme selector"
+                title="Toggle theme selector"
+                aria-expanded="false"
+                aria-controls="theme-selector"
+                class="cursor-pointer flex items-center justify-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              >
+                <Icon
+                  name="mdi:theme-light-dark"
+                  class="text-xl text-zinc-300 transition-colors"
+                />
+              </button>
             </li>
           </ul>
           <Theme id="theme-selector" addClass="hidden sm:flex pt-6 sm:pt-0" />
@@ -184,16 +192,23 @@ const canonicalURL = new URL(Astro.url).href;
     if (selector && container) {
       selector.addEventListener("click", () => {
         const isHidden = container.classList.contains("hidden");
+        const icon = selector.querySelector("svg");
         if (isHidden) {
           container.classList.add("flex");
           container.classList.remove("hidden");
-          selector.classList.add("text-blue-500", "dark:text-blue-400");
-          selector.classList.remove("text-zinc-300");
+          if (icon) {
+            icon.classList.add("text-blue-500", "dark:text-blue-400");
+            icon.classList.remove("text-zinc-300");
+          }
+          selector.setAttribute("aria-expanded", "true");
         } else {
           container.classList.add("hidden");
           container.classList.remove("flex");
-          selector.classList.add("text-zinc-300");
-          selector.classList.remove("text-blue-500", "dark:text-blue-400");
+          if (icon) {
+            icon.classList.add("text-zinc-300");
+            icon.classList.remove("text-blue-500", "dark:text-blue-400");
+          }
+          selector.setAttribute("aria-expanded", "false");
         }
       });
     }
