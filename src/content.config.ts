@@ -1,10 +1,10 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "zod";
 import { glob } from "astro/loaders";
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/blog" }),
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  schema: ({ image }: { image: () => z.ZodType<any> }) =>
+  schema: ({ image }) =>
     z.object({
       title: z.string().max(80).min(10),
       hero: image(),
