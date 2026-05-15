@@ -44,7 +44,8 @@ function rawFonts(ext) {
         const buffer = readFileSync(id);
         return {
           code: `export default ${JSON.stringify(buffer)}`,
-          map: null
+          map: null,
+          moduleType: "js"
         };
       }
     }
