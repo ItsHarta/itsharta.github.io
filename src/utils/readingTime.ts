@@ -1,6 +1,6 @@
 /**
  * Calculates reading time from raw Markdown/MDX text.
- * Strips imports, exports, and HTML/JSX tags to provide an accurate estimate.
+ * Strips imports and exports to provide an accurate estimate.
  *
  * @param text The raw Markdown/MDX text content.
  * @returns The estimated reading time text (e.g., "3 min read").
@@ -15,10 +15,7 @@ export function calculateReadingTime(text: string): string {
     return !trimmed.startsWith("import ") && !trimmed.startsWith("export ");
   });
 
-  let cleanText = cleanLines.join("\n");
-
-  // Strip HTML/JSX tags (e.g., <Component />, <div>...</div>)
-  cleanText = cleanText.replace(/<[^>]*>/g, "");
+  const cleanText = cleanLines.join("\n");
 
   const words = cleanText.trim().split(/\s+/).length;
   const minutes = Math.ceil(words / 200);
