@@ -40,14 +40,24 @@ export function calculateReadingTime(text: string): string {
   // Strip MDX imports and exports (simple line-based approach)
   const lines = text.split("\n");
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].trim();
-    if (line.startsWith("import ") || line.startsWith("export ")) {
+    const line = lines[i];
+
+    // Find the first non-whitespace character to check for imports/exports without allocating a trimmed string
+    let start = 0;
+    while (start < line.length && isWhitespace(line.charCodeAt(start))) {
+      start++;
+    }
+
+    if (
+      line.startsWith("import ", start) ||
+      line.startsWith("export ", start)
+    ) {
       continue;
     }
 
     // ⚡ Bolt: Count words in the line without regex or splitting to avoid creating arrays and excessive string allocations
     let inWord = false;
-    for (let j = 0; j < line.length; j++) {
+    for (let j = start; j < line.length; j++) {
       if (isWhitespace(line.charCodeAt(j))) {
         inWord = false;
       } else if (!inWord) {

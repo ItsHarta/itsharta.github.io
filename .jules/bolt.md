@@ -4,3 +4,6 @@
 ## 2024-03-24 - Avoid Splitting Strings When Counting Words
 **Learning:** Calculating reading time by creating intermediate arrays (`split`, `filter`, `join`, `split`) introduces heavy garbage collection overhead, particularly when parsing large MDX strings across multiple files.
 **Action:** Replace map/filter/split operations on massive strings with an optimized character loop using `charCodeAt` to manually count words, avoiding the bulk of the allocations.
+## 2024-03-24 - Avoid `.trim()` on Massive Arrays of Lines
+**Learning:** Calling `line.trim()` inside a loop allocating a new string per line undermines the goal of reducing string allocations.
+**Action:** Use an index-based `while` loop to find the start index of the first non-whitespace character, and pass that index to `startsWith("prefix", start)` instead of trimming.
