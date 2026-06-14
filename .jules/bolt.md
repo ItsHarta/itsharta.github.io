@@ -3,4 +3,4 @@
 **Action:** Extract simple properties like reading time using a custom utility that parses the raw `post.body` string directly, bypassing the heavy `render()` pipeline during list rendering.
 ## 2024-03-24 - Avoid Splitting Strings When Counting Words
 **Learning:** Calculating reading time by creating intermediate arrays (`split`, `filter`, `join`, `split`) introduces heavy garbage collection overhead, particularly when parsing large MDX strings across multiple files.
-**Action:** Replace map/filter/split operations on massive strings with an allocation-free character loop using `charCodeAt` to manually count words.
+**Action:** Replace map/filter/split operations on massive strings with an optimized character loop using `charCodeAt` to manually count words, avoiding the bulk of the allocations.
