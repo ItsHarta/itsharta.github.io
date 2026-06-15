@@ -1,0 +1,4 @@
+
+## 2024-11-20 - Accessible Icon-Only Links in Dual Themes
+**Learning:** Icon-only links (e.g., social links containing just an `<Icon>`) suffer from missing accessible names for screen readers and redundant `title` readouts if the child icon still has its `title` attribute. They also lack clear keyboard focus indicators out-of-the-box, especially problematic in dual-theme setups where focus rings may clash with backgrounds.
+**Action:** When creating icon-only links, add a descriptive `aria-label` to the parent `<a>` element, remove any nested `title` attributes on SVG/Icon components to prevent duplicate announcements, and implement explicit `focus-visible` utility classes with correct background-aware `ring-offset` classes (e.g., `focus-visible:ring-offset-zinc-100 dark:focus-visible:ring-offset-zinc-900`) to guarantee clear visual focus states in both light and dark modes.
