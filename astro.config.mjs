@@ -8,6 +8,7 @@ import expressiveCode from "astro-expressive-code";
 import { remarkReadingTime } from "./remark-reading-time.mjs";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
+import { unified } from "@astrojs/markdown-remark";
 
 // https://astro.build/config
 export default defineConfig({
@@ -27,7 +28,9 @@ export default defineConfig({
     clientPrerender: true
   },
   markdown: {
-    remarkPlugins: [remarkReadingTime]
+    processor: unified({
+      remarkPlugins: [remarkReadingTime]
+    })
   },
   image: {
     service: sharpImageService(),
