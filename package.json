@@ -56,8 +56,8 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=16.0.0"
-  },
+    "node": ">=22.12.0"
+  }
   "browserslist": "> 0.25%, not dead",
   "repository": {
     "type": "git",
