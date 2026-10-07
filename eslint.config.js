@@ -1,7 +1,7 @@
 import typescriptEslint from "@typescript-eslint/eslint-plugin";
 import astro from "eslint-plugin-astro";
 import tsParser from "@typescript-eslint/parser";
-import parser from "astro-eslint-parser";
+import * as parser from "astro-eslint-parser";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 // import js from "@eslint/js";
